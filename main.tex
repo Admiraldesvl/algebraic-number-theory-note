@@ -1,5 +1,15 @@
 \documentclass[en]{elegantbook}
+% --- Packages ---
 \usepackage{amsmath}
+\usepackage{dsfont}
+% --- Packages ---
+
+% --- Simpler commands ---
+\newcommand{\mds}{\mathds}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\OK}{\mathcal{O}_K}
+% --- Simpler commands ---
 
 \title{Note on Algebraic Number Theory}
 \subtitle{with a look at modern geometry}
@@ -11,7 +21,6 @@
 \begin{document}
 	\maketitle
 	\tableofcontents
-	\chapter*{Introduction}
-	\markboth{Introduction}{Introduction}
-	\chapter{Algebraic Integer}
+	\input{Chapters/Ch00.tex} % Introduction
+	\input{Chapters/Ch01.tex} % Algebraic Integers
 \end{document}
