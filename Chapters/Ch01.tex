@@ -1,90 +1,134 @@
 \chapter{Algebraic Integers}
-	\section{Integral closure and algebraic numbers}
-		Problems in solving polynomial equations give rise to a lot of concepts in algebra and geometry. If we are specifically interested in $\mds{Z}$, we have the concept of \textbf{algebraic integers}.
-		
-		\begin{definition}
-			A finite extension $K$ of the rational number $\mds{Q}$ is called a \textbf{number field}. The integral closure of $\mds{Z}$ in $K$ is called the ring of \textbf{algebraic integers} of $K$, and is denoted by $\OK$. To be precise, every element $x \in \OK$ is a zero of a monic polynomial $f \in \Z[X].$
-		\end{definition}
-	
-		For this concept we have a lot of classic examples:
-		
-		\begin{example}
-			If $K=\Q$, then $\OK$ is simply $\Z$. This is intuitive because suppose $x=a/b \in \Q$ is integral over $\Z$ where $(a,b)=1$, then
-			\[
-				x^n+c_1x^{n-1}+\cdots+c_n = 0
-			\]
-			where $c_i \in \Z$. Multiplying by $b^n$ yields
-			\[
-				a^n+c_1a^{n-1}b+\cdots+c_nb = 0
-			\]
-			Hence $b$ divides $a^n$. But we also have $(a^n,b)=1$, hence $b=\pm 1$, which is to say $x \in \Z$.
+	\section{Integral closure and algebraic integers}
+		\subsection{Definition and examples}
+			Problems in solving polynomial equations give rise to a lot of concepts in algebra and geometry. If we are specifically interested in $\mds{Z}$, we have the concept of \textbf{algebraic integers}.
+			\begin{definition}
+				A finite extension $K$ of the rational number $\mds{Q}$ is called a \textbf{number field}. The integral closure of $\mds{Z}$ in $K$ is called the ring of \textbf{algebraic integers} of $K$, and is denoted by $\OK$. To be precise, every element $x \in \OK$ is a zero of a monic polynomial $f \in \Z[X].$
+			\end{definition}
 			
-			There is an more general setting. Since $\Z$ is a unique factorial domain (UFD), and UFD is integrally closed \href{https://proofwiki.org/wiki/Unique_Factorization_Domain_is_Integrally_Closed}{[proof]}, we have $\Z=\OK$. 
-		\end{example}
-	
-		\begin{example}
-			The Gaussian rational $\Q(i)=K$. Indeed it is natural to consider Gaussian integer $\Z[i]$ first. For any $z=m+ni \in \Z[i]$, we have
-			\[
-				z^2-2mz+m^2+n^2=0
-			\]
-			Hence $\Z[i] \subset \OK$. The converse is similar to our proof when $K=\Q$.
-		\end{example}
-	
-		\begin{example}
-			Cyclotomic field $K=Q(\xi_n)$, where $\xi_n$ is the root of $x^n-1$. In this case we have $\OK = \Z[\xi_n]$.
-		\end{example}
-		
-		\begin{example}
-			Quadratic field $K=\Q(\sqrt{d})$, where $d$ is a square-free integer $>1$. This time the algebraic integer ring is different from what you may have thought: $\OK = \Z[\omega]$ where
+			For this concept we have a lot of classic examples:
+			
+			\begin{example}
+				If $K=\Q$, then $\OK$ is simply $\Z$. This is intuitive because suppose $x=a/b \in \Q$ is integral over $\Z$ where $(a,b)=1$, then
 				\[
-					\omega = \begin{cases}
-						\frac{1+\sqrt{d}}{2}, &\quad d = 4k+1, \\
-						\sqrt{d}, &\quad \text{otherwise}.
-					\end{cases}
+				x^n+c_1x^{n-1}+\cdots+c_n = 0
 				\]
-		\end{example}
-		It turns out we are studying polynomials such as
-		\begin{itemize}
-			\item $x^2+1=0$.
-			\item $x^n-1=0$.
-			\item $x^2-d=0$.
-		\end{itemize}
-		It also turns out that many properties are not restricted to $\Z$, but to a specific class of rings. Hence we will investigate some properties in the sense of commutative ring theory. First we investigate separable extensions.
+				where $c_i \in \Z$. Multiplying by $b^n$ yields
+				\[
+				a^n+c_1a^{n-1}b+\cdots+c_nb = 0
+				\]
+				Hence $b$ divides $a^n$. But we also have $(a^n,b)=1$, hence $b=\pm 1$, which is to say $x \in \Z$.
+				
+				There is an more general setting. Since $\Z$ is a unique factorial domain (UFD), and UFD is integrally closed \href{https://proofwiki.org/wiki/Unique_Factorization_Domain_is_Integrally_Closed}{[proof]}, we have $\Z=\OK$. 
+			\end{example}
+			
+			\begin{example}
+				The Gaussian rational $\Q(i)=K$. Indeed it is natural to consider Gaussian integer $\Z[i]$ first. For any $z=m+ni \in \Z[i]$, we have
+				\[
+				z^2-2mz+m^2+n^2=0
+				\]
+				Hence $\Z[i] \subset \OK$. The converse is similar to our proof when $K=\Q$.
+			\end{example}
+			
+			\begin{example}
+				Cyclotomic field $K=Q(\xi_n)$, where $\xi_n$ is the root of $x^n-1$. In this case we have $\OK = \Z[\xi_n]$.
+			\end{example}
+			
+			\begin{example}
+				Quadratic field $K=\Q(\sqrt{d})$, where $d$ is a square-free integer $>1$. This time the algebraic integer ring is different from what you may have thought: $\OK = \Z[\omega]$ where
+				\[
+				\omega = \begin{cases}
+					\frac{1+\sqrt{d}}{2}, &\quad d = 4k+1, \\
+					\sqrt{d}, &\quad \text{otherwise}.
+				\end{cases}
+				\]
+			\end{example}
+			It turns out we are studying polynomials such as
+			\begin{itemize}
+				\item $x^2+1=0$.
+				\item $x^n-1=0$.
+				\item $x^2-d=0$.
+			\end{itemize}
+		It also turns out that many properties are not restricted to $\Z$, but to a specific class of rings. Hence we will investigate some properties in the sense of commutative ring theory.
+		\subsection{Algebraic extension and integral closure}
+			First of all we show that being algebraic almost implies being integral. 
+			\begin{lemma}\label{alg-int}
+				Let $A$ be a ring, $K$ its quotient field, and $x$ algebraic over $K$. Then there exists an element $c \ne 0$ of $A$ such that $cx$ is integral over $A$.
+			\end{lemma}
+			\begin{proof}
+				Since $x$ is algebraic, we have an equation
+				\[
+					a_nx^n+\cdots+a_0=0
+				\]
+				with $a_i \in A$ and $a_n \ne 0$. Hence
+				\[
+					a_n^{n-1}(a_nx^n+\cdots+a_0)=(a_nx)^n+\cdots+a_0a_n^{n-1}=0
+				\]
+				which is to say $a_nx$ is integral over $A$. 
+			\end{proof}
+			
+			Since finite extensions are algebraic, we are always free to use this lemma for the topic of number field.
+			
+			\begin{theorem}
+				Let $A$ be an integrally closed Noetherian ring. Let $L$ be a finite separable extension of its quotient field $K$. Then the integral closure of $A$ in $L$ is finitely generated over $A$.
+			\end{theorem}
+			\begin{proof}
+				Since $A$ is Noetherian, all submodules of a finitely generated module over $A$ is finitely generated. Hence it suffices to prove that the integral closure of $A$ is contained in a finitely generated $A$-module.\\
+				Let $w_1,\dots,w_n$ be a basis of $L$ over $K$. After multiplying each $w_i$ by some suitable element of $A$ (see lemma \ref{alg-int}), we may assume without loss of generality that the $w_i$ are integral over $A$. To study the integral closure of $A$ in $L$, we pick an arbitrary element $z = b_1w_1+\cdots+b_nw_n$ and study its coefficients. \\
+				Since $L/K$ is separable, the \href{https://stacks.math.columbia.edu/tag/0BIF}{field trace} form
+				\[
+					Q_{L/K}:L \times L \to K, \quad (x,y) \mapsto \tr_{L/K}(xy)
+				\]
+				is non-degenerate  \href{https://stacks.math.columbia.edu/tag/0BIL}{[proof]}, so we claim that $L^\ast$ is isomorphic to $L$ under $Q_{L/K}$. Indeed, one can define a $K$-linear map
+				\[
+					d:L \to L^\ast, \quad x \mapsto (y \mapsto Q_{L/K}(x,y)=\tr(xy)).
+				\]
+				This map is injective because $Q_{L/K}$ is non-degenerate. Since $L$ and $L^\ast$ has the same dimension, $d$ has to be surjective.\\
+				Let $w^1,\dots,w^n$ be the dual basis of $w_1,\dots,w_n$. If we put $v_i=d^{-1}(w^i)$, we have
+				\[
+					\tr(v_i w_j) = \delta_{ij}.
+				\]
+				Let $c \ne 0$ be an element of $A$ such that $cv_i$ is integral over $A$, then $cv_iz$ is integral and so is $\tr(cv_iz)$. Since $\tr$ is a $K$-valued function, we have
+				\[
+					\tr(czv_i)=c\tr(v_iz)=c d(v_i)(z) = cb_i \in A \implies b_i \in Ac^{-1}.
+				\]
+				Hence
+				\[
+					z \in Ac^{-1}w_1+\cdots+Ac^{-1}w_n
+				\]
+				which is to say $z$ is finitely generated. Since $z$ is arbitrarily picked, the closure itself is contained in a finitely generated $A$-module, which finishes the proof. $\qed$
+			\end{proof}
+			Note $Z$ is itself a Noetherian ring and integrally closed. $\Q$ is the fraction ring of $\Z$, and finite extensions of $\Q$ are always separable. It follows (non-trivially) that
+			\begin{corollary}
+				$\OK$ is finitely generated over $\Z$.
+			\end{corollary}
+			
+			Next we study the degree of $\OK$.
+			
+			\begin{theorem}
+				Let $A$ be a principal ideal ring, and $L$ a finite separable extension of its quotient field $K$, of degree $n$. Let $B$ be the integral closure of $A$ in $L$. Then $B$ is a free module of rank $n$ over $A$. 
+			\end{theorem}
 		
-		\begin{theorem}
-			Let $A$ be a Noetherian ring, integrally closed. Let $L$ be a finite separable extension of its quotient field $K$. Then the integral closure of $A$ in $L$ is finitely generated over $A$.
-		\end{theorem}
-		\begin{proof}
-			Since $A$ is Noetherian, all submodules of a finitely generated module over $A$ is finitely generated. Hence it suffices to prove that the integral closure of $A$ is contained in a finitely generated $A$-module. % TODO: FINISH THE PROOF
-		\end{proof}
-		Note $Z$ is itself a Noetherian ring and integrally closed. $\Q$ is the fraction ring of $\Z$, and finite extensions of $\Q$ are always separable. It follows immediately that
-		\begin{corollary}
-			$\OK$ is finitely generated over $\Z$.
-		\end{corollary}
+			\begin{proof}
+				% TODO: FINISH THE PROOF.
+			\end{proof}
 	
-		Next we study the degree of $\OK$.
+		\subsection{Localisation}
 		
-		\begin{theorem}
-			Let $A$ be a principal ideal ring, and $L$ a finite separable extension of its quotient field $K$, of degree $n$. Let $B$ be the integral closure of $A$ in $L$. Then $B$ is a free module of rank $n$ over $A$. 
-		\end{theorem}
-	
-		\begin{proof}
-			% TODO: FINISH THE PROOF.
-		\end{proof}
-	
-		Next we study the localisation.
+			\begin{theorem}
+				Let $A$ be a subring of a ring $B$, which is integral over $A$. Let $S$ be a multiplicative subset of $A$. Then $S^{-1}B$ is integral over $S^{-1}A$. If $A$ is integrally closed, then $S^{-1}A$ is integrally closed.
+			\end{theorem}
 		
-		\begin{theorem}
-			Let $A$ be a subring of a ring $B$, which is integral over $A$. Let $S$ be a multiplicative subset of $A$. Then $S^{-1}B$ is integral over $S^{-1}A$. If $A$ is integrally closed, then $S^{-1}A$ is integrally closed.
-		\end{theorem}
-	
-		\begin{proof}
-			% TODO: FINISH THE PROOF.
-		\end{proof}
-	
-		\begin{corollary}
-			If $B$ is the integral closure of $A$ in some field extension $L$ of the quotient field of $A$, then $S^{-1}B$ is the integral closure of $S^{-1}A$ in $L$.
-		\end{corollary}
-		\begin{proof}
-			% TODO: FINISH THE PROOF.
-		\end{proof}
+			\begin{proof}
+				% TODO: FINISH THE PROOF.
+			\end{proof}
+		
+			\begin{corollary}
+				If $B$ is the integral closure of $A$ in some field extension $L$ of the quotient field of $A$, then $S^{-1}B$ is the integral closure of $S^{-1}A$ in $L$.
+			\end{corollary}
+			\begin{proof}
+				% TODO: FINISH THE PROOF.
+			\end{proof}
+		
+		\subsection{Dedekind Domain}
+			% TODO: O_K IS DEDEKIND.
