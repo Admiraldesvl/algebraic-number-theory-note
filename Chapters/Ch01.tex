@@ -69,7 +69,7 @@
 			
 			Since finite extensions are algebraic, we are always free to use this lemma for the topic of number field.
 			
-			\begin{theorem}
+			\begin{theorem}\label{closure-f-g}
 				Let $A$ be an integrally closed Noetherian ring. Let $L$ be a finite separable extension of its quotient field $K$. Then the integral closure of $A$ in $L$ is finitely generated over $A$.
 			\end{theorem}
 			\begin{proof}
@@ -103,16 +103,23 @@
 				$\OK$ is finitely generated over $\Z$.
 			\end{corollary}
 			
-			Next we study the degree of $\OK$.
+			Next we study the rank of $\OK$ over $\Z$. Being finitely generated is not exactly what we want.
 			
 			\begin{theorem}
 				Let $A$ be a principal ideal ring, and $L$ a finite separable extension of its quotient field $K$, of degree $n$. Let $B$ be the integral closure of $A$ in $L$. Then $B$ is a free module of rank $n$ over $A$. 
 			\end{theorem}
 		
 			\begin{proof}
-				% TODO: FINISH THE PROOF.
+				Since $A$ is contained in $K$, $B$ is contained in $L$, whenever $ab=0$ with $a \in A$, $b \in B$, we have $a=0$ or $b=0$. Hence $B$ is torsion-free. Therefore as a finitely generated (theorem \ref{closure-f-g}) torsion-free module, $B$ is a free module over $A$ \href{http://du.ac.in/du/uploads/departments/mathematics/study-material/MMATH18-201\%20_MT_PID.pdf}{[Theorem 2.7]}. Since $L$ is a $n$-dimensional vector space over $K$, for $y \in L$ we have
+				\[
+					y = c_1e_1+\cdots+c_ne_n
+				\]
+				where $e_1,\dots,e_n$ is a basis and $c_1,\cdots,c_n \in K$. When $y \in B$, we must have $c_1,\cdots,c_n \in A$, which is to say $B$ has rank $[L:K]=n$.
 			\end{proof}
-	
+			Hence the rank of $\OK$ over $\Z$ is determined by $[K:\Q]$.
+		\subsection{Prime ideals and Dedekind domain}
+		% TODO: O_K IS DEDEKIND.
+		
 		\subsection{Localisation}
 		
 			\begin{theorem}
@@ -130,5 +137,3 @@
 				% TODO: FINISH THE PROOF.
 			\end{proof}
 		
-		\subsection{Dedekind Domain}
-			% TODO: O_K IS DEDEKIND.
