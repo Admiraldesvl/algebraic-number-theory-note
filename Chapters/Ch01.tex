@@ -53,7 +53,7 @@
 		\subsection{Algebraic extension and integral closure}
 			First of all we show that being algebraic almost implies being integral. 
 			\begin{lemma}\label{alg-int}
-				Let $A$ be a ring, $K$ its quotient field, and $x$ algebraic over $K$. Then there exists an element $c \ne 0$ of $A$ such that $cx$ is integral over $A$.
+				Let $A$ be a domain, $K$ its quotient field, and $x$ algebraic over $K$. Then there exists an element $c \ne 0$ of $A$ such that $cx$ is integral over $A$.
 			\end{lemma}
 			\begin{proof}
 				Since $x$ is algebraic, we have an equation
@@ -117,23 +117,80 @@
 				where $e_1,\dots,e_n$ is a basis and $c_1,\cdots,c_n \in K$. When $y \in B$, we must have $c_1,\cdots,c_n \in A$, which is to say $B$ has rank $[L:K]=n$.
 			\end{proof}
 			Hence the rank of $\OK$ over $\Z$ is determined by $[K:\Q]$.
-		\subsection{Prime ideals and Dedekind domain}
-		% TODO: O_K IS DEDEKIND.
 		
 		\subsection{Localisation}
 		
 			\begin{theorem}
-				Let $A$ be a subring of a ring $B$, which is integral over $A$. Let $S$ be a multiplicative subset of $A$. Then $S^{-1}B$ is integral over $S^{-1}A$. If $A$ is integrally closed, then $S^{-1}A$ is integrally closed.
+				Let $A \subset B$ be rings, and $S$ a multiplicatively closed subset of $A$. If $B$ is integral over $A$, then $S^{-1}B$ is integrally closed in $S^{-1}A$. If $C$ is the integral closure of $A$ in $B$, then $S^{-1}C$ is the integral closure of $S^{-1}A$. 
 			\end{theorem}
 		
 			\begin{proof}
-				% TODO: FINISH THE PROOF.
+				First we assume $B$ is integral over $A$. Pick $x/s \in S^{-1}B$ with $x \in B$ and $s \in S$. By definition we have
+				\[
+					x^n + a_1x^{n-1}+\cdots + a_n = 0
+				\]
+				with $a_i \in A$. Multiplying by $(1/s)^n$ gives
+				\[
+					(x/s)^n + (a_1/s)(x/s)^{n-1}+\cdots+a_n/s^n = 0
+				\]
+				which shows that $x/s$ is integral over $S^{-1}A$. Hence the first statement is proved. \\
+				Now we assume $C$ is the integral closure of $A$ in $B$. By the first statement we see $S^{-1}C$ is integral over $S^{-1}A$. Suppose $b/s \in S^{-1}B$ is integral over $S^{-1}A$, we have an equation of the form
+				\[
+					(b/s)^n+(a_1/s_1)(b/s)^{n-1}+\cdots+a_n/s_n=0.
+				\]
+				Multiplying by $(st)^n$ where $t=s_1\cdots s_n$ gives an equation of integral independence for $bt$ over $A$. Hence $bt \in C$. But $b/s = bt/st$, hence $b/s \in S^{-1}C$ and we are done. 
 			\end{proof}
 		
+			If $S$ happens to be a complement of a prime ideal $\mfk{p}$, we have a satisfying result
+			
+			\begin{corollary}
+				If $B$ is integral over $A$, then $B_\mfk{p}$ is integral over $A_\mfk{p}$.
+			\end{corollary}
+			
+			If $B$ is replaced by a field extension $L$ of the quotient field of $A$, and $C$ is replaced by the integral closure of $A$, we have the following corollary:
+			
 			\begin{corollary}
 				If $B$ is the integral closure of $A$ in some field extension $L$ of the quotient field of $A$, then $S^{-1}B$ is the integral closure of $S^{-1}A$ in $L$.
 			\end{corollary}
-			\begin{proof}
-				% TODO: FINISH THE PROOF.
-			\end{proof}
+			
+			% TODO: ADD SOME EXAMPLES
 		
+		\subsection{Prime ideals and Dedekind domain}
+			% TODO: O_K IS DEDEKIND.
+			By theorem \ref{closure-f-g}, $\OK$ is a finitely-generated $\Z$-module, hence is a Noetherian domain. By transitivity of integral closures, $\OK$ is integrally closed. We are now interested in the Krull dimension of $\OK$.
+			\begin{theorem}
+				Every prime ideal $P$ in $\OK$ is maximal. Hence $\OK$ is of Krull dimension $1$ and is therefore Dedekind.
+			\end{theorem}
+			To prove this, we investigate more of the prime ideal with respect to integral closure. 
+			\begin{definition}
+				Let $B$ be a ring containing a ring $A$. Let $\mfk{p}$ be a prime ideal of $A$ and $\mfk{P}$ a prime ideal of $B$. We say that $\mfk{P}$ \textbf{lies above} $\mfk{p}$ if $\mfk{P} \cap A = \mfk{p}$ and we then write $\mfk{P}|\mfk{p}$.
+			\end{definition}
+			
+			If $\mfk{P}|\mfk{p}$, we have a commutative diagram:
+			\[
+				\begin{tikzcd}
+					B \arrow[r, "\pi'"]               & B/\mathfrak{P}                  \\
+					A \arrow[r, "\pi"] \arrow[u, "i"] & A/\mathfrak{p} \arrow[u, "i'"']
+				\end{tikzcd}
+			\]
+			where $i$ and $i'$ are inclusions, $\pi$ and $\pi'$ are canonical homomorphisms. \\
+			If $B$ is integral over $A$, then $B/\mfk{P}$ is integral over $A/\mfk{p}$, this is because of the following lemma:
+			\begin{lemma}
+				Let $A \subset B$ be rings, and $\sigma:B \to C$ be a homomorphism. If $B$ is integral over $A$, then $\sigma(B)$ is integral over $\sigma(A)$.
+			\end{lemma}
+			\begin{proof}
+				If $B$ is integral over $A$, then for any $x \in B$ there is an equation
+				\[
+					x^n + a_{n-1}x^{n-1}+\cdots+a_0 = 0.
+				\]
+				Therefore
+				\[
+					\begin{aligned}
+						\sigma(x^n+a_{n-1}x^{n-1}+\cdots+a_0) &= \sigma(x^n)+\sigma(a_{n-1}x^{n-1})+\cdots+\sigma(a_0) \\
+															  &= \sigma(x)^n + \sigma(a_{n-1})\sigma(x)^{n-1}+\cdots+\sigma(\sigma) \\
+															  &= 0.
+					\end{aligned}
+				\]
+				Hence $\sigma(x)$ is integral in $\sigma(A)$.
+			\end{proof}
+			And we can simply take $\sigma$ to be $\pi'$.
