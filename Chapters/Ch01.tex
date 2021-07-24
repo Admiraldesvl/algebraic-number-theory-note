@@ -153,6 +153,11 @@
 				If $B$ is the integral closure of $A$ in some field extension $L$ of the quotient field of $A$, then $S^{-1}B$ is the integral closure of $S^{-1}A$ in $L$.
 			\end{corollary}
 			
+			In particular, if $S=A \setminus \mfk{p}$ where $\mfk{p}$ is prime, we see
+			\begin{corollary}\label{int-loc}
+				If $B$ is the integral closure of $A$, then $B_\mfk{p}$ is the integral closure of $A_\mfk{p}$ for each prime ideal $\mfk{p}$.
+			\end{corollary}
+			
 			% TODO: ADD SOME EXAMPLES
 		
 		\subsection{Prime ideals and Dedekind domain}
@@ -174,7 +179,7 @@
 				\end{tikzcd}
 			\]
 			where $i$ and $i'$ are inclusions, $\pi$ and $\pi'$ are canonical homomorphisms. \\
-			If $B$ is integral over $A$, then $B/\mfk{P}$ is integral over $A/\mfk{p}$, this is because of the following lemma:
+			If $B$ is integral over $A$, then $B/\mfk{P}$ is integral over $A/\mfk{p}$, this is because of the following lemma if we take $\sigma$ to be $\pi$:
 			\begin{lemma}
 				Let $A \subset B$ be rings, and $\sigma:B \to C$ be a homomorphism. If $B$ is integral over $A$, then $\sigma(B)$ is integral over $\sigma(A)$.
 			\end{lemma}
@@ -193,4 +198,34 @@
 				\]
 				Hence $\sigma(x)$ is integral in $\sigma(A)$.
 			\end{proof}
-			And we can simply take $\sigma$ to be $\pi'$.
+			
+			We want to show that prime ideals of $\OK$ is maximal, and they should be corresponded to prime ideals in $\Z$, which is maximal. For this reason we show the existence of lying-above prime ideals.
+			
+			\begin{theorem}
+				Let $A$ be a ring, $\mfk{p}$ a prime ideal, and $B \supset A$ integral over $A$. Then $\mfk{p}B \ne B$, and there exists a prime ideal $\mfk{P}$ of $B$ lying above $\mfk{p}$. 
+			\end{theorem}
+		
+			\begin{proof}
+				We know that $B_\mfk{p}$ is integral over $A_\mfk{p}$ (corollary \ref{int-loc}) and that $A_\mfk{p}$ is local with maximal ideal $\mfk{m}_\mfk{p}=\mfk{p}A_\mfk{p}$. It follows that
+				\[
+					\mfk{p}B_\mfk{p}=\mfk{p}A_\mfk{p}B = \mfk{p}A_\mfk{p}B_\mfk{p}=\mfk{m}_\mfk{p}B_\mfk{p}.
+				\]
+				Hence it suffices to prove our assertion when $A$ is local. If $\mfk{p}B=B$, we have an equation
+				\[
+					1 = a_1b_1+\cdots+a_nb_n
+				\]
+				with $a_i \in \mfk{p}$ and $b_i \in B$. Let $B_0 = A[b_1,\cdots,b_n]$. Then $\mfk{p}B_0=B_0$ and $B_0$ is a finitely generated $A$-module. Hence by Nakayama's lemma, $B_0=0$, which is absurd.
+				
+				To prove the existence of $\mfk{P}$, consider the following commutative diagram:
+				\[
+					\begin{tikzcd}
+						B \arrow[r]           & B_\mathfrak{p}           \\
+						A \arrow[r] \arrow[u] & A_\mathfrak{p} \arrow[u]
+					\end{tikzcd}
+				\]
+				where all arrows are natural inclusions. As is proved, $\mfk{m}_\mfk{p}B_\mfk{p} \ne B_\mfk{p}$. Hence $\mfk{m}_\mfk{p}B_\mfk{p}$ is contained in a maximal ideal $\mfk{M}$ of $\mfk{p}$, and therefore $\mfk{M} \cap A_\mfk{p}$ contains $\mfk{m}_\mfk{p}$. And we pick $\mfk{P}=\mfk{M} \cap B$. Then $\mfk{P}$ is a prime ideal of $B$, and taking intersection with $A$ going both ways around our diagram shows that $\mfk{M} \cap A = \mfk{p}$, so that
+				\[
+					\mfk{P} \cap A = \mfk{p},
+				\]
+				as was to be shown.
+			\end{proof}
