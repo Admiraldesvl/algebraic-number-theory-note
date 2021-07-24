@@ -1,4 +1,6 @@
 \chapter{Algebraic Integers}
+	\setcounter{page}{1}
+	\pagenumbering{arabic}
 	\section{Integral closure and algebraic integers}
 		\subsection{Definition and examples}
 			Problems in solving polynomial equations give rise to a lot of concepts in algebra and geometry. If we are specifically interested in $\mds{Z}$, we have the concept of \textbf{algebraic integers}.
@@ -96,7 +98,7 @@
 				\[
 					z \in Ac^{-1}w_1+\cdots+Ac^{-1}w_n
 				\]
-				which is to say $z$ is finitely generated. Since $z$ is arbitrarily picked, the closure itself is contained in a finitely generated $A$-module, which finishes the proof. $\qed$
+				which is to say $z$ is finitely generated. Since $z$ is arbitrarily picked, the closure itself is contained in a finitely generated $A$-module, which finishes the proof. 
 			\end{proof}
 			Note $Z$ is itself a Noetherian ring and integrally closed. $\Q$ is the fraction ring of $\Z$, and finite extensions of $\Q$ are always separable. It follows (non-trivially) that
 			\begin{corollary}
@@ -160,10 +162,10 @@
 			
 			% TODO: ADD SOME EXAMPLES
 		
-		\subsection{Prime ideals and Dedekind domain}
-			% TODO: O_K IS DEDEKIND.
+	\section{Dedekind domain}
+		\subsection{Prime Ideals}
 			By theorem \ref{closure-f-g}, $\OK$ is a finitely-generated $\Z$-module, hence is a Noetherian domain. By transitivity of integral closures, $\OK$ is integrally closed. We are now interested in the Krull dimension of $\OK$.
-			\begin{theorem}
+			\begin{theorem}\label{o_k-dedekind}
 				Every prime ideal $P$ in $\OK$ is maximal. Hence $\OK$ is of Krull dimension $1$ and is therefore Dedekind.
 			\end{theorem}
 			To prove this, we investigate more of the prime ideal with respect to integral closure. 
@@ -201,7 +203,7 @@
 			
 			We want to show that prime ideals of $\OK$ is maximal, and they should be corresponded to prime ideals in $\Z$, which is maximal. For this reason we show the existence of lying-above prime ideals.
 			
-			\begin{theorem}
+			\begin{theorem}\label{lying-above}
 				Let $A$ be a ring, $\mfk{p}$ a prime ideal, and $B \supset A$ integral over $A$. Then $\mfk{p}B \ne B$, and there exists a prime ideal $\mfk{P}$ of $B$ lying above $\mfk{p}$. 
 			\end{theorem}
 		
@@ -228,4 +230,37 @@
 					\mfk{P} \cap A = \mfk{p},
 				\]
 				as was to be shown.
+			\end{proof}
+		
+			Now we proceed to the crucial theorem to determine whether a prime lying above is maximal.
+			
+			\begin{theorem}\label{lie-above-maximal}
+				Let $A$ be a subring of $B$, and assume $B$ is integral over $A$. Let $\mfk{P}$ be a prime ideal of $B$ lying over a prime ideal $\mfk{p}$ of $A$. Then $\mfk{P}$ is maximal $\iff$ $\mfk{p}$ is maximal.
+			\end{theorem}
+		
+			\begin{proof}
+				$\implies$: Note $B/\mfk{P}$ is a field and is integral over the ring $A/\mfk{p}$. Were $A/\mfk{p}$ not a field, there would be a non-trivial ideal $\mfk{m}$ of it, and $B/\mfk{P}$ would have a prime ideal $\mfk{M}$ lying above $\mfk{m}$, by theorem \ref{lying-above}. A contradiction. \\
+				$\impliedby$: Note $A/\mfk{p}$ is a field. It suffices to prove that a ring $R$ which is integral over a field $k$ is a field. If $k$ is a field and non-zero $x \in R$ is integral over $k$, we have a minimal polynomial
+				\[
+					x^n+c_{n-1}y^{n-1}+\cdots+c_0=0
+				\]
+				with $c_i \in k$. Since $R$ is integral, we have $c_0 \ne 0$. We can clearly write
+				\[
+					x^{-1}=-c_0^{-1}(x^{n-1}+c_{n-1}y_{n-2}+\cdots+c_1) \in R,
+				\]
+				which is to say $R$ is integral, and the theorem is therefore proved.
+			\end{proof}
+			
+			And now we are ready to prove that $\OK$ is Dedekind.
+			
+			\begin{proof}[Proof of theorem \ref{o_k-dedekind}]
+				Note it suffices to prove that every prime ideal $\mfk{P}$ of $\OK$ lies above some prime ideal of $\Z$, since $\Z$ has Krull dimension $1$, and the proof follows from theorem \ref{lie-above-maximal}. All we need to do is to prove that $\mfk{P} \cap \Z$ is non-zero: since the inverse image of a prime ideal is prime, we are done. For each $x \in \mfk{P}$, we have a minimal polynomial $f \in \Z[X]$ such that
+				\[
+					f(x) = x^n+c_{n-1}x^{n-1}+\cdots+c_0=0
+				\]
+				with $c_i \in \Z$ and $c_0 \ne 0$. It follows that
+				\[
+					c_0=-(x^n+c_{n-1}x^{n-1}+\cdots+c_1x) \in \mfk{P} \cap \Z,
+				\]
+				which is to say $\mfk{P} \cap \Z$ is indeed non-zero. This concludes the proof.
 			\end{proof}
