@@ -145,7 +145,7 @@
 		
 			If $S$ happens to be a complement of a prime ideal $\mfk{p}$, we have a satisfying result
 			
-			\begin{corollary}
+			\begin{corollary}\label{int-loc}
 				If $B$ is integral over $A$, then $B_\mfk{p}$ is integral over $A_\mfk{p}$.
 			\end{corollary}
 			
@@ -156,6 +156,137 @@
 			\end{corollary}
 			
 			% TODO: ADD SOME EXAMPLES
+		\subsection{Prime Ideals}
+			By theorem \ref{closure-f-g}, $\OK$ is a finitely-generated $\Z$-module, hence is a Noetherian domain. By transitivity of integral closures, $\OK$ is integrally closed. We are now interested in the Krull dimension of $\OK$. To do this, we investigate more of the prime ideal with respect to integral closure. 
+			\begin{definition}
+				Let $B$ be a ring containing a ring $A$. Let $\mfk{p}$ be a prime ideal of $A$ and $\mfk{P}$ a prime ideal of $B$. We say that $\mfk{P}$ \textbf{lies above} $\mfk{p}$ if $\mfk{P} \cap A = \mfk{p}$ and we then write $\mfk{P}|\mfk{p}$.
+			\end{definition}
+			
+			If $\mfk{P}|\mfk{p}$, we have a commutative diagram:
+			\[
+			\begin{tikzcd}
+				B \arrow[r, "\pi'"]               & B/\mathfrak{P}                  \\
+				A \arrow[r, "\pi"] \arrow[u, "i"] & A/\mathfrak{p} \arrow[u, "i'"']
+			\end{tikzcd}
+			\]
+			where $i$ and $i'$ are inclusions, $\pi$ and $\pi'$ are canonical homomorphisms. \\
+			If $B$ is integral over $A$, then $B/\mfk{P}$ is integral over $A/\mfk{p}$, this is because of the following lemma if we take $\sigma$ to be $\pi$:
+			\begin{lemma}
+				Let $A \subset B$ be rings, and $\sigma:B \to C$ be a homomorphism. If $B$ is integral over $A$, then $\sigma(B)$ is integral over $\sigma(A)$.
+			\end{lemma}
+			\begin{proof}
+				If $B$ is integral over $A$, then for any $x \in B$ there is an equation
+				\[
+				x^n + a_{n-1}x^{n-1}+\cdots+a_0 = 0.
+				\]
+				Therefore
+				\[
+				\begin{aligned}
+					\sigma(x^n+a_{n-1}x^{n-1}+\cdots+a_0) &= \sigma(x^n)+\sigma(a_{n-1}x^{n-1})+\cdots+\sigma(a_0) \\
+					&= \sigma(x)^n + \sigma(a_{n-1})\sigma(x)^{n-1}+\cdots+\sigma(\sigma) \\
+					&= 0.
+				\end{aligned}
+				\]
+				Hence $\sigma(x)$ is integral in $\sigma(A)$.
+			\end{proof}
+			
+			We want to show that prime ideals of $\OK$ is maximal, and they should be corresponded to prime ideals in $\Z$, which is maximal. For this reason we show the existence of lying-above prime ideals.
+			
+			\begin{theorem}\label{lying-above}
+				Let $A$ be a ring, $\mfk{p}$ a prime ideal, and $B \supset A$ integral over $A$. Then $\mfk{p}B \ne B$, and there exists a prime ideal $\mfk{P}$ of $B$ lying above $\mfk{p}$. 
+			\end{theorem}
+			
+			\begin{proof}
+				We know that $B_\mfk{p}$ is integral over $A_\mfk{p}$ (corollary \ref{int-loc}) and that $A_\mfk{p}$ is local with maximal ideal $\mfk{m}_\mfk{p}=\mfk{p}A_\mfk{p}$. It follows that
+				\[
+				\mfk{p}B_\mfk{p}=\mfk{p}A_\mfk{p}B = \mfk{p}A_\mfk{p}B_\mfk{p}=\mfk{m}_\mfk{p}B_\mfk{p}.
+				\]
+				Hence it suffices to prove our assertion when $A$ is local. If $\mfk{p}B=B$, we have an equation
+				\[
+				1 = a_1b_1+\cdots+a_nb_n
+				\]
+				with $a_i \in \mfk{p}$ and $b_i \in B$. Let $B_0 = A[b_1,\cdots,b_n]$. Then $\mfk{p}B_0=B_0$ and $B_0$ is a finitely generated $A$-module. Hence by Nakayama's lemma, $B_0=0$, which is absurd.
+				
+				To prove the existence of $\mfk{P}$, consider the following commutative diagram:
+				\[
+				\begin{tikzcd}
+					B \arrow[r]           & B_\mathfrak{p}           \\
+					A \arrow[r] \arrow[u] & A_\mathfrak{p} \arrow[u]
+				\end{tikzcd}
+				\]
+				where all arrows are natural inclusions. As is proved, $\mfk{m}_\mfk{p}B_\mfk{p} \ne B_\mfk{p}$. Hence $\mfk{m}_\mfk{p}B_\mfk{p}$ is contained in a maximal ideal $\mfk{M}$ of $\mfk{p}$, and therefore $\mfk{M} \cap A_\mfk{p}$ contains $\mfk{m}_\mfk{p}$. And we pick $\mfk{P}=\mfk{M} \cap B$. Then $\mfk{P}$ is a prime ideal of $B$, and taking intersection with $A$ going both ways around our diagram shows that $\mfk{M} \cap A = \mfk{p}$, so that
+				\[
+				\mfk{P} \cap A = \mfk{p},
+				\]
+				as was to be shown.
+			\end{proof}
+			
+			Now we proceed to the crucial theorem to determine whether a prime lying above is maximal.
+			
+			\begin{theorem}\label{lie-above-maximal}
+				Let $A$ be a subring of $B$, and assume $B$ is integral over $A$. Let $\mfk{P}$ be a prime ideal of $B$ lying over a prime ideal $\mfk{p}$ of $A$. Then $\mfk{P}$ is maximal $\iff$ $\mfk{p}$ is maximal.
+			\end{theorem}
+			
+			\begin{proof}
+				$\implies$: Note $B/\mfk{P}$ is a field and is integral over the ring $A/\mfk{p}$. Were $A/\mfk{p}$ not a field, there would be a non-trivial ideal $\mfk{m}$ of it, and $B/\mfk{P}$ would have a prime ideal $\mfk{M}$ lying above $\mfk{m}$, by theorem \ref{lying-above}. A contradiction. \\
+				$\impliedby$: Note $A/\mfk{p}$ is a field. It suffices to prove that a ring $R$ which is integral over a field $k$ is a field. If $k$ is a field and non-zero $x \in R$ is integral over $k$, we have a minimal polynomial
+				\[
+				x^n+c_{n-1}y^{n-1}+\cdots+c_0=0
+				\]
+				with $c_i \in k$. Since $R$ is integral, we have $c_0 \ne 0$. We can clearly write
+				\[
+				x^{-1}=-c_0^{-1}(x^{n-1}+c_{n-1}y_{n-2}+\cdots+c_1) \in R,
+				\]
+				which is to say $R$ is integral, and the theorem is therefore proved.
+			\end{proof}
+			With respect to localisation, we can show the stability of prime ideals lying above:
+			\begin{corollary}
+				Let $A \subset B$ be rings, $B$ integral over $A$; Let $\mfk{P}$ and $\mfk{P}'$ be prime ideals of $B$ such that $\mfk{P} \subset \mfk{P}'$ and both $\mfk{P}$ and $\mfk{P}'$ lie above a prime ideal $\mfk{p}$ of $A$, then $\mfk{P}=\mfk{P}'$. 
+			\end{corollary}
+			\begin{proof}
+				By corollary \ref{int-loc}, $B_\mfk{p}$ is integral over $A_\mfk{p}$. Let $\mfk{m}$ be the extension of $\mfk{p}$ in $A_\mfk{p}$ and $\mfk{M},\mfk{M}'$ be the extensions of $\mfk{P}$ and $\mfk{P}'$ respectively in $B_\mfk{p}$. Then $\mfk{m}$ is the maximal ideal of $A_\mfk{p}$; $\mfk{M} \subset \mfk{M}'$, and $\mfk{M}$, $\mfk{M}'$ lies above $\mfk{m}$. Hence by theorem \ref{lie-above-maximal}, $\mfk{M}$ and $\mfk{M}'$ are both maximal, hence equal. This reduces to $\mfk{P}=\mfk{P}'$.
+			\end{proof}
+			And now we are ready to prove that $\OK$ is Dedekind.
+			
+			\begin{theorem}\label{o_k-dedekind}
+				Every prime ideal $P$ in $\OK$ is maximal. Hence $\OK$ is of Krull dimension $1$ and is therefore Dedekind.
+			\end{theorem}
+			
+			\begin{proof}
+				Note it suffices to prove that every prime ideal $\mfk{P}$ of $\OK$ lies above some prime ideal of $\Z$, since $\Z$ has Krull dimension $1$, and the proof follows from theorem \ref{lie-above-maximal}. All we need to do is to prove that $\mfk{P} \cap \Z$ is non-zero: since the inverse image of a prime ideal is prime, we are done. For each $x \in \mfk{P}$, we have a minimal polynomial $f \in \Z[X]$ such that
+				\[
+				f(x) = x^n+c_{n-1}x^{n-1}+\cdots+c_0=0
+				\]
+				with $c_i \in \Z$ and $c_0 \ne 0$. It follows that
+				\[
+				c_0=-(x^n+c_{n-1}x^{n-1}+\cdots+c_1x) \in \mfk{P} \cap \Z,
+				\]
+				which is to say $\mfk{P} \cap \Z$ is indeed non-zero. This concludes the proof.
+			\end{proof}
+			\begin{example}
+				As a classic example, consider $K=\Q(\sqrt{-5})$ and $\OK = \Z[\sqrt{-5}]$. This ring is not a unique factorial domain because we have
+				\[
+				6 = 2 \cdot 3 = (1-\sqrt{-5}) \cdot (1+\sqrt{-5}).
+				\]
+				But if we view in the sense of product of ideals, nothing goes wrong. Let $\mfk{m}$ be the maximal ideal containing $6$, then
+				\[
+				\mfk{m} = (2,1-\sqrt{-5})(2,1+\sqrt{-5})
+				\]
+				is unique. Note two ideals on the right hand side are indeed maximal (hence prime) because
+				\[
+				\begin{aligned}
+					\frac{\Z[\sqrt{-5}]}{(2,1-\sqrt{-5})} &\cong \frac{\Z[X]/(X^2+5)}{(2,1-X,X^2+5)/(X^2+5)} \\
+					&\cong \frac{\Z[X]}{(2,1-X,X^2+5)} \cong \frac{\Z_2[X]}{(1-X,X^2-1)} \cong \frac{\Z_2[X]}{(1-X)} \cong \Z_2.
+				\end{aligned}
+				\]
+				Likewise,
+				\[
+				\begin{aligned}
+					\frac{\Z[\sqrt{-5}]}{(3,1+\sqrt{-5})} &\cong \frac{\Z[X]/(X^2+5)}{(3,1+X,X^2+5)/(X^2+5)} \\
+					&\cong \frac{\Z[X]}{(3,1+X,X^2+5)} \cong \frac{\Z_3[X]}{(1+X,X^2-1)} \cong \frac{\Z_3[X]}{(1+X)} \cong \Z_3.
+				\end{aligned}
+				\]
+			\end{example}
 	\section{Galois extensions}
 		\subsection{Decomposition group and decomposition field}
 			If $K$ is a Galois extension of $\Q$, then the Galois group allows us to transform amongst prime ideals in a natural way. This is because of the following theorem.
@@ -182,135 +313,18 @@
 				\]
 				lies in $B \cap K = A$ since $A$ is integrally closed, and lies in $\mfk{P} \cap A = \mfk{p}=\mfk{Q} \cap A \subset \mfk{Q}$. But we also have $\sigma{x} \not\in \mfk{Q}$ for all $\sigma \in G$, hence $N_K^L(x) \not \in \mfk{Q}$, a contradiction.
 			\end{proof}
-			If one localise, the consideration on whether a prime ideal is maximal is not required. Besides, if $A$ is of Krull dimension $1$, then one has no need to consider as well. In next section we show that $\OK$ is always of Krull dimension $1$.
+			If one localise, the consideration on whether a prime ideal is maximal is not required. Besides, if $A$ is of Krull dimension $1$, then one has no need to consider as well. Since we have shown that $\OK$ is a Dedekind domain, this theorem can be applied as well. Next we show the finiteness of prime ideals lying above.
+			
+			\begin{corollary} 
+				Let $A$ be an integrally closed ring. Let $E$ be a finite separable extension of $K$, and $B$ the integral closure of $A$ in $E$. Let $\mfk{p}$ be a maximal ideal of $A$. Then there exists only a finite number of prime ideals of $B$ lying above $\mfk{p}$.
+			\end{corollary}
+			\begin{proof}
+				Let $L$ be the smallest Galois extension of $K$ containing $E$. If $\mfk{Q}_1$ and $\mfk{Q}_2$ are two distinct prime ideals of $B$ lying above $\mfk{p}$, and $\mfk{P}_1$, $\mfk{P}_2$ are two prime ideals of the integral closure of $A$ in $L$ lying above $\mfk{Q}_1$ and $\mfk{Q}_2$ respectively, then $\mfk{P}_1 \ne \mfk{P}_2$. This argument reduces our assertion to the case that $E$ is Galois over $K$, and it then becomes an immediate consequence of the proposition.
+			\end{proof}
 		\subsection{Inertia group and field}
 		\subsection{Automorphisms}
 	\section{Dedekind domain}
-		\subsection{Prime Ideals}
-			By theorem \ref{closure-f-g}, $\OK$ is a finitely-generated $\Z$-module, hence is a Noetherian domain. By transitivity of integral closures, $\OK$ is integrally closed. We are now interested in the Krull dimension of $\OK$. To do this, we investigate more of the prime ideal with respect to integral closure. 
-			\begin{definition}
-				Let $B$ be a ring containing a ring $A$. Let $\mfk{p}$ be a prime ideal of $A$ and $\mfk{P}$ a prime ideal of $B$. We say that $\mfk{P}$ \textbf{lies above} $\mfk{p}$ if $\mfk{P} \cap A = \mfk{p}$ and we then write $\mfk{P}|\mfk{p}$.
-			\end{definition}
-			
-			If $\mfk{P}|\mfk{p}$, we have a commutative diagram:
-			\[
-				\begin{tikzcd}
-					B \arrow[r, "\pi'"]               & B/\mathfrak{P}                  \\
-					A \arrow[r, "\pi"] \arrow[u, "i"] & A/\mathfrak{p} \arrow[u, "i'"']
-				\end{tikzcd}
-			\]
-			where $i$ and $i'$ are inclusions, $\pi$ and $\pi'$ are canonical homomorphisms. \\
-			If $B$ is integral over $A$, then $B/\mfk{P}$ is integral over $A/\mfk{p}$, this is because of the following lemma if we take $\sigma$ to be $\pi$:
-			\begin{lemma}
-				Let $A \subset B$ be rings, and $\sigma:B \to C$ be a homomorphism. If $B$ is integral over $A$, then $\sigma(B)$ is integral over $\sigma(A)$.
-			\end{lemma}
-			\begin{proof}
-				If $B$ is integral over $A$, then for any $x \in B$ there is an equation
-				\[
-					x^n + a_{n-1}x^{n-1}+\cdots+a_0 = 0.
-				\]
-				Therefore
-				\[
-					\begin{aligned}
-						\sigma(x^n+a_{n-1}x^{n-1}+\cdots+a_0) &= \sigma(x^n)+\sigma(a_{n-1}x^{n-1})+\cdots+\sigma(a_0) \\
-															  &= \sigma(x)^n + \sigma(a_{n-1})\sigma(x)^{n-1}+\cdots+\sigma(\sigma) \\
-															  &= 0.
-					\end{aligned}
-				\]
-				Hence $\sigma(x)$ is integral in $\sigma(A)$.
-			\end{proof}
-			
-			We want to show that prime ideals of $\OK$ is maximal, and they should be corresponded to prime ideals in $\Z$, which is maximal. For this reason we show the existence of lying-above prime ideals.
-			
-			\begin{theorem}\label{lying-above}
-				Let $A$ be a ring, $\mfk{p}$ a prime ideal, and $B \supset A$ integral over $A$. Then $\mfk{p}B \ne B$, and there exists a prime ideal $\mfk{P}$ of $B$ lying above $\mfk{p}$. 
-			\end{theorem}
 		
-			\begin{proof}
-				We know that $B_\mfk{p}$ is integral over $A_\mfk{p}$ (corollary \ref{int-loc}) and that $A_\mfk{p}$ is local with maximal ideal $\mfk{m}_\mfk{p}=\mfk{p}A_\mfk{p}$. It follows that
-				\[
-					\mfk{p}B_\mfk{p}=\mfk{p}A_\mfk{p}B = \mfk{p}A_\mfk{p}B_\mfk{p}=\mfk{m}_\mfk{p}B_\mfk{p}.
-				\]
-				Hence it suffices to prove our assertion when $A$ is local. If $\mfk{p}B=B$, we have an equation
-				\[
-					1 = a_1b_1+\cdots+a_nb_n
-				\]
-				with $a_i \in \mfk{p}$ and $b_i \in B$. Let $B_0 = A[b_1,\cdots,b_n]$. Then $\mfk{p}B_0=B_0$ and $B_0$ is a finitely generated $A$-module. Hence by Nakayama's lemma, $B_0=0$, which is absurd.
-				
-				To prove the existence of $\mfk{P}$, consider the following commutative diagram:
-				\[
-					\begin{tikzcd}
-						B \arrow[r]           & B_\mathfrak{p}           \\
-						A \arrow[r] \arrow[u] & A_\mathfrak{p} \arrow[u]
-					\end{tikzcd}
-				\]
-				where all arrows are natural inclusions. As is proved, $\mfk{m}_\mfk{p}B_\mfk{p} \ne B_\mfk{p}$. Hence $\mfk{m}_\mfk{p}B_\mfk{p}$ is contained in a maximal ideal $\mfk{M}$ of $\mfk{p}$, and therefore $\mfk{M} \cap A_\mfk{p}$ contains $\mfk{m}_\mfk{p}$. And we pick $\mfk{P}=\mfk{M} \cap B$. Then $\mfk{P}$ is a prime ideal of $B$, and taking intersection with $A$ going both ways around our diagram shows that $\mfk{M} \cap A = \mfk{p}$, so that
-				\[
-					\mfk{P} \cap A = \mfk{p},
-				\]
-				as was to be shown.
-			\end{proof}
-		
-			Now we proceed to the crucial theorem to determine whether a prime lying above is maximal.
-			
-			\begin{theorem}\label{lie-above-maximal}
-				Let $A$ be a subring of $B$, and assume $B$ is integral over $A$. Let $\mfk{P}$ be a prime ideal of $B$ lying over a prime ideal $\mfk{p}$ of $A$. Then $\mfk{P}$ is maximal $\iff$ $\mfk{p}$ is maximal.
-			\end{theorem}
-		
-			\begin{proof}
-				$\implies$: Note $B/\mfk{P}$ is a field and is integral over the ring $A/\mfk{p}$. Were $A/\mfk{p}$ not a field, there would be a non-trivial ideal $\mfk{m}$ of it, and $B/\mfk{P}$ would have a prime ideal $\mfk{M}$ lying above $\mfk{m}$, by theorem \ref{lying-above}. A contradiction. \\
-				$\impliedby$: Note $A/\mfk{p}$ is a field. It suffices to prove that a ring $R$ which is integral over a field $k$ is a field. If $k$ is a field and non-zero $x \in R$ is integral over $k$, we have a minimal polynomial
-				\[
-					x^n+c_{n-1}y^{n-1}+\cdots+c_0=0
-				\]
-				with $c_i \in k$. Since $R$ is integral, we have $c_0 \ne 0$. We can clearly write
-				\[
-					x^{-1}=-c_0^{-1}(x^{n-1}+c_{n-1}y_{n-2}+\cdots+c_1) \in R,
-				\]
-				which is to say $R$ is integral, and the theorem is therefore proved.
-			\end{proof}
-			
-			And now we are ready to prove that $\OK$ is Dedekind.
-			
-			\begin{theorem}\label{o_k-dedekind}
-				Every prime ideal $P$ in $\OK$ is maximal. Hence $\OK$ is of Krull dimension $1$ and is therefore Dedekind.
-			\end{theorem}
-			
-			\begin{proof}
-				Note it suffices to prove that every prime ideal $\mfk{P}$ of $\OK$ lies above some prime ideal of $\Z$, since $\Z$ has Krull dimension $1$, and the proof follows from theorem \ref{lie-above-maximal}. All we need to do is to prove that $\mfk{P} \cap \Z$ is non-zero: since the inverse image of a prime ideal is prime, we are done. For each $x \in \mfk{P}$, we have a minimal polynomial $f \in \Z[X]$ such that
-				\[
-					f(x) = x^n+c_{n-1}x^{n-1}+\cdots+c_0=0
-				\]
-				with $c_i \in \Z$ and $c_0 \ne 0$. It follows that
-				\[
-					c_0=-(x^n+c_{n-1}x^{n-1}+\cdots+c_1x) \in \mfk{P} \cap \Z,
-				\]
-				which is to say $\mfk{P} \cap \Z$ is indeed non-zero. This concludes the proof.
-			\end{proof}
-			\begin{example}
-				As a class example, consider $K=\Q(\sqrt{-5})$, and $\OK = \Z[\sqrt{-5}]$. This ring is not a unique factorial domain because we have
-				\[
-					6 = 2 \cdot 3 = (1-\sqrt{-5}) \cdot (1+\sqrt{-5}).
-				\]
-				But if we view in the sense of product of ideals, nothing goes wrong. Let $\mfk{m}$ be the maximal ideal containing $6$, then
-				\[
-					\mfk{m} = (2,1-\sqrt{-5})(2,1+\sqrt{-5})
-				\]
-				is unique. Note two ideals on the right hand side are indeed maximal (hence prime) because
-				\[
-					\begin{aligned}
-						\frac{\Z[\sqrt{-5}]}{(2,1-\sqrt{-5})} &\cong \frac{\Z[X]/(X^2+5)}{(2,1-X,X^2+5)/(X^2+5)} \\
-															 &\cong \frac{\Z[X]}{(2,1-X,X^2+5)} \cong \frac{\Z_2[X]}{(1-X,X^2-1)} \cong \frac{\Z_2[X]}{(1-X)} \cong \Z_2.
-					\end{aligned}
-				\]
-				Likewise,
-				\[
-					\begin{aligned}
-						\frac{\Z[\sqrt{-5}]}{(3,1+\sqrt{-5})} &\cong \frac{\Z[X]/(X^2+5)}{(3,1+X,X^2+5)/(X^2+5)} \\
-															  &\cong \frac{\Z[X]}{(3,1+X,X^2+5)} \cong \frac{\Z_3[X]}{(1+X,X^2-1)} \cong \frac{\Z_3[X]}{(1+X)} \cong Z_3.
-					\end{aligned}
-				\]
-			\end{example}
 		\subsection{Ramification index}
 		
 		\subsection{Norm}
