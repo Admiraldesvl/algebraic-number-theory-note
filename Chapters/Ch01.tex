@@ -155,20 +155,37 @@
 				If $B$ is the integral closure of $A$ in some field extension $L$ of the quotient field of $A$, then $S^{-1}B$ is the integral closure of $S^{-1}A$ in $L$.
 			\end{corollary}
 			
-			In particular, if $S=A \setminus \mfk{p}$ where $\mfk{p}$ is prime, we see
-			\begin{corollary}\label{int-loc}
-				If $B$ is the integral closure of $A$, then $B_\mfk{p}$ is the integral closure of $A_\mfk{p}$ for each prime ideal $\mfk{p}$.
-			\end{corollary}
-			
 			% TODO: ADD SOME EXAMPLES
-		
+	\section{Galois extensions}
+		\subsection{Decomposition group and decomposition field}
+			If $K$ is a Galois extension of $\Q$, then the Galois group allows us to transform amongst prime ideals in a natural way. This is because of the following theorem.
+			\[
+				\begin{tikzcd}
+					\mathfrak{P} \arrow[rr, "\exists \sigma \in G"] &                                    & \mathfrak{Q} \\
+					& \mathfrak{p} \arrow[lu] \arrow[ru] &             
+				\end{tikzcd}
+			\]
+			\begin{theorem}
+				Let $A$ be a ring, integrally closed in its quotient field $K$. Let $L$ be a finite Galois extension of $K$ with group $G$. Let $\mfk{p}$ be a maximal ideal of $A$, and let $\mfk{P}$, $\mfk{Q}$ be prime ideals of the integral closure of $A$ in $L$ lying above $\mfk{p}$. Then there exists $\sigma \in G$ such that $\sigma\mfk{P} = \mfk{Q}$.
+			\end{theorem}
+			\begin{proof}
+				Suppose that $\mfk{P}=\sigma\mfk{Q}$ for all $\sigma \in G$. By the Chinese remainder theorem, we have some $x \in B$ such that 
+				\[
+					\begin{aligned}
+						x &\equiv 0 \mod \mfk{P} \\
+						x &\equiv 1 \mod \sigma\mfk{Q}, \quad \forall \sigma \in G.
+					\end{aligned}
+				\]
+				Then the norm
+				\[
+					N_K^L(x) = \prod_{\sigma \in G}\sigma{x}
+				\]
+				lies in $B \cap K = A$ since $A$ is integrally closed, and lies in $\mfk{P} \cap A = \mfk{p}=\mfk{Q} \cap A \subset \mfk{Q}$. But we also have $\sigma{x} \not\in \mfk{Q}$ for all $\sigma \in G$, hence $N_K^L(x) \not \in \mfk{Q}$, a contradiction.
+			\end{proof}
+			If one localise the consideration on whether a prime ideal is maximal is not required. Besides, if $A$ is of Krull dimension $1$, then one has no need to consider as well. In next section we show that $\OK$ is always of Krull dimension $1$.
 	\section{Dedekind domain}
 		\subsection{Prime Ideals}
-			By theorem \ref{closure-f-g}, $\OK$ is a finitely-generated $\Z$-module, hence is a Noetherian domain. By transitivity of integral closures, $\OK$ is integrally closed. We are now interested in the Krull dimension of $\OK$.
-			\begin{theorem}\label{o_k-dedekind}
-				Every prime ideal $P$ in $\OK$ is maximal. Hence $\OK$ is of Krull dimension $1$ and is therefore Dedekind.
-			\end{theorem}
-			To prove this, we investigate more of the prime ideal with respect to integral closure. 
+			By theorem \ref{closure-f-g}, $\OK$ is a finitely-generated $\Z$-module, hence is a Noetherian domain. By transitivity of integral closures, $\OK$ is integrally closed. We are now interested in the Krull dimension of $\OK$. To do this, we investigate more of the prime ideal with respect to integral closure. 
 			\begin{definition}
 				Let $B$ be a ring containing a ring $A$. Let $\mfk{p}$ be a prime ideal of $A$ and $\mfk{P}$ a prime ideal of $B$. We say that $\mfk{P}$ \textbf{lies above} $\mfk{p}$ if $\mfk{P} \cap A = \mfk{p}$ and we then write $\mfk{P}|\mfk{p}$.
 			\end{definition}
@@ -253,7 +270,11 @@
 			
 			And now we are ready to prove that $\OK$ is Dedekind.
 			
-			\begin{proof}[Proof of theorem \ref{o_k-dedekind}]
+			\begin{theorem}\label{o_k-dedekind}
+				Every prime ideal $P$ in $\OK$ is maximal. Hence $\OK$ is of Krull dimension $1$ and is therefore Dedekind.
+			\end{theorem}
+			
+			\begin{proof}
 				Note it suffices to prove that every prime ideal $\mfk{P}$ of $\OK$ lies above some prime ideal of $\Z$, since $\Z$ has Krull dimension $1$, and the proof follows from theorem \ref{lie-above-maximal}. All we need to do is to prove that $\mfk{P} \cap \Z$ is non-zero: since the inverse image of a prime ideal is prime, we are done. For each $x \in \mfk{P}$, we have a minimal polynomial $f \in \Z[X]$ such that
 				\[
 					f(x) = x^n+c_{n-1}x^{n-1}+\cdots+c_0=0
@@ -263,4 +284,61 @@
 					c_0=-(x^n+c_{n-1}x^{n-1}+\cdots+c_1x) \in \mfk{P} \cap \Z,
 				\]
 				which is to say $\mfk{P} \cap \Z$ is indeed non-zero. This concludes the proof.
+			\end{proof}
+			\begin{example}
+				As a class example, consider $K=\Q(\sqrt{-5})$, and $\OK = \Z[\sqrt{-5}]$. This ring is not a unique factorial domain because we have
+				\[
+					6 = 2 \cdot 3 = (1-\sqrt{-5}) \cdot (1+\sqrt{-5}).
+				\]
+				But if we view in the sense of product of ideals, nothing goes wrong. Let $\mfk{m}$ be the maximal ideal containing $6$, then
+				\[
+					\mfk{m} = (2,1-\sqrt{-5})(2,1+\sqrt{-5})
+				\]
+				is unique. Note two ideals on the right hand side are indeed maximal (hence prime) because
+				\[
+					\begin{aligned}
+						\frac{\Z[\sqrt{-5}]}{(2,1-\sqrt{-5})} &\cong \frac{\Z[X]/(X^2+5)}{(2,1-X,X^2+5)/(X^2+5)} \\
+															 &\cong \frac{\Z[X]}{(2,1-X,X^2+5)} \cong \frac{\Z_2[X]}{(1-X,X^2-1)} \cong \frac{\Z_2[X]}{(1-X)} \cong \Z_2.
+					\end{aligned}
+				\]
+				Likewise,
+				\[
+					\begin{aligned}
+						\frac{\Z[\sqrt{-5}]}{(3,1+\sqrt{-5})} &\cong \frac{\Z[X]/(X^2+5)}{(3,1+X,X^2+5)/(X^2+5)} \\
+															  &\cong \frac{\Z[X]}{(3,1+X,X^2+5)} \cong \frac{\Z_3[X]}{(1+X,X^2-1)} \cong \frac{\Z_3[X]}{(1+X)} \cong Z_3.
+					\end{aligned}
+				\]
+			\end{example}
+		
+		\subsection{Discrete valuation rings}
+			A \textbf{discrete valuation ring} can be considered as a localisation of Dedekind domain. Indeed, if $A$ is a discrete valuation ring, then $A$ is Noetherian and of Krull dimension $1$, and is integrally closed, hence Dedekind. If $A$ is local and Dedekind, then $A$ is a discrete valuation ring. In general, a Noetherian domain $A$ of Krull dimension one is Dedekind if and only if the localisation $A_\mfk{p}$ is a discrete valuation ring for all prime $\mfk{p}$. With respect to localisation we have a natural result:
+			\begin{theorem}
+				Let $A$ be a Dedekind ring and $M,N$ two modules over $A$. If $M_\mfk{p} \subset N_\mfk{p}$ for all prime $\mfk{p}$, then $M \subset N$.
+			\end{theorem}
+			\begin{proof}
+				Let $a \in M$. For each $\mfk{p}$ we can find $x_\mfk{p} \in N$ and $s_\mfk{p} \in A \setminus \mfk{p}$ such that $a = x_\mfk{p}/s_\mfk{p}$. Let $\mfk{b}$ be the ideal generated by the $s_\mfk{p}$, ranging through all $\mfk{p} \in \spec(A)$. Then $\mfk{b}$ is the unit ideal $A$, and we can write
+				\[
+					1 = \sum_{\mfk{p} \in \spec(A)} y_\mfk{p}s_\mfk{p}
+				\]
+				with elements $y_\mfk{p} \in A$ all but a finite number of which are $0$. This yields
+				\[
+					a = \sum_{\mfk{p} \in \spec(A)} y_\mfk{p}s_\mfk{p}a = \sum_{\mfk{p} \in \spec(A)} y_\mfk{p}x_\mfk{p} \in N
+				\]
+				as desired.
+			\end{proof}
+		
+			Now we study torsion-free modules over a discrete valuation ring. If $A$ is a discrete valuation ring, then in particular, $A$ is a principal ideal ring, and any finitely generated torsion-free module $M$ over $A$ is free. If its rank is $n$, and if $\mfk{p}$ is the maximal idea, then $M/\mfk{p}M$ is a free module of rank $n$. Further, we have
+			\begin{theorem}
+				Let $A$ be a local ring and $M$ a free module of rank $n$ over $A$. Let $\mfk{p}$ be the maximal ideal of $A$. Then $M/\mfk{p}M$ is a vector space of dimension $n$ over $A/\mfk{p}$.
+			\end{theorem}
+			\begin{proof}
+				Let $\{x_1,\dots,x_n\}$ be a basis of $M$ over $A$, then
+				\[
+					M \cong \bigoplus_{i}Ax_i
+				\]
+				and
+				\[
+					M/\mfk{p}M \cong \bigoplus_{i}(A/\mfk{p})\overline{x}_i
+				\]
+				where $\overline{x}_i$ is the residue class of $x_i$ mod $\mfk{p}$.
 			\end{proof}
