@@ -14,3 +14,12 @@
 			\item $|x+y|_v \le \max(|x|_v,|y|_v)$
 		\end{enumerate}
 		then we shall say that it is a \textbf{valuation} or that it is non-archimedean. in particular, if the absolute value $|\cdot|$ satisfy $|x|=1$ for all $x \ne 0$, then we say $|\cdot|$ is \textbf{trivial}. We will exclude this case from now on. 
+		
+		\begin{example}
+		 There exists non-archimedean absolute values $|x|_p$ on $\mathbb{Q}$ based on a prime $p$. Every rational number $x$ can be uniquely written as $\frac{a}{b} p^n$, where $a$ and $b$ are integers coprime with $p$, and $n$ an integer. We define $|x|_p=p^{-n}$.
+		 
+		 The conditions AV1 and AV2 are easily statisfied, so we only check AV4 here. Let $x$ and $y$ be rationals, represented with the form $\frac{a}{b} p^n$ and $\frac{c}{d} p^m$ respectively. We may assume $n \le m$. As $\frac{a}{b} p^n +\frac{c}{d} p^m = \frac{(p^{m-n})ad+bc}{bd} p^m$, and $bd$ is coprime with $p$, $|\frac{(p^{m-n})ad+bc}{bd} p^m|_p$ is at most $p^{-m}$ (there's the possibility that $n=m$ and $ad+bc$ is divisible by $p$; in this case, the absolute value may be even smaller). We conclude that $|x+y|_p \le max(|x|_p,|y|_p)$, i.e. $|x|_p$ is a non-archimedean absolute value. 
+		 
+		 This absolute value have different convergence properties with the usual absolute value: in this absolute value, the sequence $p$, $p^2$, $p^3$, ... , $p^n$, $p^{n_1}$, ... converges to $0$. 
+		\end{example}
+		
