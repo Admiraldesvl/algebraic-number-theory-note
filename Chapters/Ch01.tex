@@ -249,7 +249,7 @@
 			And now we are ready to prove that $\OK$ is Dedekind.
 			
 			\begin{theorem}\label{o_k-dedekind}
-				Every prime ideal $P$ in $\OK$ is maximal. Hence $\OK$ is of Krull dimension $1$ and is therefore Dedekind.
+				Every prime ideal $\mfk{P}$ in $\OK$ is maximal. Hence $\OK$ is of Krull dimension $1$ and is therefore Dedekind.
 			\end{theorem}
 			
 			\begin{proof}
@@ -296,7 +296,7 @@
 					& \mathfrak{p} \arrow[lu] \arrow[ru] &             
 				\end{tikzcd}
 			\]
-			\begin{theorem}
+			\begin{theorem}\label{galois-lie-above}
 				Let $A$ be a ring, integrally closed in its quotient field $K$. Let $L$ be a finite Galois extension of $K$ with group $G$. Let $\mfk{p}$ be a maximal ideal of $A$, and let $\mfk{P}$, $\mfk{Q}$ be prime ideals of the integral closure of $A$ in $L$ lying above $\mfk{p}$. Then there exists $\sigma \in G$ such that $\sigma\mfk{P} = \mfk{Q}$.
 			\end{theorem}
 			\begin{proof}
@@ -316,10 +316,21 @@
 			If one localise, the consideration on whether a prime ideal is maximal is not required. Besides, if $A$ is of Krull dimension $1$, then one has no need to consider as well. Since we have shown that $\OK$ is a Dedekind domain, this theorem can be applied as well. Next we show the finiteness of prime ideals lying above.
 			
 			\begin{corollary} 
-				Let $A$ be an integrally closed ring. Let $E$ be a finite separable extension of $K$, and $B$ the integral closure of $A$ in $E$. Let $\mfk{p}$ be a maximal ideal of $A$. Then there exists only a finite number of prime ideals of $B$ lying above $\mfk{p}$.
+				Let $A$ be an integrally closed domain whose field of fraction is $K$. Let $E$ be a finite separable extension of $K$, and $B$ the integral closure of $A$ in $E$. Let $\mfk{p}$ be a maximal ideal of $A$. Then there exists only a finite number of prime ideals of $B$ lying above $\mfk{p}$.
 			\end{corollary}
 			\begin{proof}
-				Let $L$ be the smallest Galois extension of $K$ containing $E$. If $\mfk{Q}_1$ and $\mfk{Q}_2$ are two distinct prime ideals of $B$ lying above $\mfk{p}$, and $\mfk{P}_1$, $\mfk{P}_2$ are two prime ideals of the integral closure of $A$ in $L$ lying above $\mfk{Q}_1$ and $\mfk{Q}_2$ respectively, then $\mfk{P}_1 \ne \mfk{P}_2$. This argument reduces our assertion to the case that $E$ is Galois over $K$, and it then becomes an immediate consequence of the proposition.
+				 If $E$ is Galois over $K$, then by theorem \ref{galois-lie-above}, $\sigma\mfk{P}_1 = \mfk{P}_2$ for some $\sigma \in \gal(E/K)$. Suppose $\mfk{P}_1|\mfk{p}$, then the set of prime ideals lying above $\mfk{p}$ is contained in the set
+				\[
+					\{\mfk{Q} \subset B: \mfk{Q}=\sigma\mfk{P}_1,\sigma\in\gal(E/K)\},
+				\]
+				hence is finite because $\gal(E/K)$ is finite. If $E$ is not necessarily Galois, we can pick the smallest Galois extension $L/K$ containing $E$, which is a finite extension as well. Let $C$ be the integral closure of $A$ in $L$. Suppose $\mfk{P},\mfk{Q} \in \spec(B)$ are two distinct prime ideals lying above $\mfk{p}$, and $\mfk{P}',\mfk{Q}' \in \spec(C)$ lying above $\mfk{P}$ and $\mfk{Q}$ respectively. Note $\mfk{P}' \ne \mfk{Q}'$ because if not then $\mfk{P}=\mfk{Q}$, a contradiction. Therefore the distinct prime ideals of $B$ lying above $\mfk{p}$ are less than the distinct prime ideals of $C$ lying above $\mfk{p}$, which proves our assertion.
+				\[
+					\begin{tikzcd}
+						\mathfrak{P}'          &                                    & \mathfrak{Q}'          & C                   \\
+						\mathfrak{P} \arrow[u] &                                    & \mathfrak{Q} \arrow[u] & B \arrow[u, dashed] \\
+						& \mathfrak{p} \arrow[lu] \arrow[ru] &                        & A \arrow[u, dashed]
+					\end{tikzcd}
+				\]
 			\end{proof}
 		\subsection{Inertia group and field}
 		\subsection{Automorphisms}
