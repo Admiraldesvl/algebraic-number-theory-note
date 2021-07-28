@@ -337,7 +337,7 @@
 					\end{tikzcd}
 				\]
 			\end{proof}
-		\begin{example}
+		\begin{example}\label{gauss-int-1}
 			Now take $K=\Q(i)$, $\OK=\Z[i]$ and $\mfk{p}=(5)$. Since $\gal(K/\Q)=\{1,\sigma\}$ where $\sigma$ is the complex conjugation, there are at most two prime ideals lying above $\mfk{p}$. First of all $5\Z[i]$ is not prime because 
 			\[
 				5+0i = (2-i)(2+i).
@@ -357,7 +357,7 @@
 		\]
 		We will study norm extensively in the future. %TODO: add reference if it is needed.
 		
-		Let $A$ be an integrally closed ring with quotient field $K$, and $B$ its integral closure in a finite Galois extension $L$. Then firstly $\sigma{B}=B$ for all $\sigma \in \gal(L/K)$ (Proof: $\sigma{B} \subset L$ is integral over $\sigma{A}=A$, hence has to be $B$ itself). Automorphisms fixing base field give rise to Galois group, and now we are interested in automorphisms that also fix ideals. 
+		Let $A$ be an integrally closed ring with quotient field $K$, and $B$ its integral closure in a finite normal extension $L$. Then firstly $\sigma{B}=B$ for all $\sigma \in \gal(L/K)$ (Proof: $\sigma{B} \subset L$ is integral over $\sigma{A}=A$, hence has to be $B$ itself). Automorphisms fixing base field give rise to Galois group, and now we are interested in automorphisms that also fix ideals. 
 		
 		\begin{definition}
 			Notations being above, let $\mfk{p}$ be a maximal ideal of $A$, $\mfk{P}$ maximal in $B$ lying above $\mfk{p}$. Then the subgroup
@@ -366,7 +366,20 @@
 			\]
 			is called the \textbf{decomposition group} of $\mfk{P}$. Its fixed field will be denoted by $L^d$, and will be called the \textbf{decomposition field} of $\mfk{P}$. 
 		\end{definition}
-		
+		Two non-trivial examples are given, abelian and non-abelian. We will frequently return to these examples after new concepts are introduced. 
+		\begin{example}
+			Consider $K = \Q(\sqrt{-1},\sqrt{2},\sqrt{5})$, whose Galois group is $\Z/2\Z \times \Z/2\Z \times \Z/2\Z$. The decomposition field of $(5)$ is
+			\[
+				K^d = \Q(\sqrt{-1},\sqrt{2}).
+			\]
+		\end{example}
+		\begin{example}
+			Consider $K = \Q(\sqrt[3]{19},\omega)$ where $\omega = e^{2\pi i/3}$. The Galois group is $S_3$. The decomposition fields of $(3)$ are
+			\[
+				\Q(\sqrt[3]{19}),\quad \Q(\omega\sqrt[3]{19}),\quad\Q(\omega^2\sqrt[3]{19}).
+			\]
+			At this point we can only compute the field manually but after introducing ramification index things are much easier. 
+		\end{example}
 		\subsection{Automorphisms}
 	\section{Dedekind domain}
 		
