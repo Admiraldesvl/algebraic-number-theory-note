@@ -367,8 +367,9 @@
 			is called the \textbf{decomposition group} of $\mfk{P}$. Its fixed field will be denoted by $L^d$, and will be called the \textbf{decomposition field} of $\mfk{P}$. 
 		\end{definition}
 		Two non-trivial examples are given, abelian and non-abelian. We will frequently return to these examples after new concepts are introduced. 
+		% TODO: expand details of these two examples.
 		\begin{example}
-			Consider $K = \Q(\sqrt{-1},\sqrt{2},\sqrt{5})$, whose Galois group is $\Z/2\Z \times \Z/2\Z \times \Z/2\Z$. The decomposition field of $(5)$ is
+			Consider $K = \Q(\sqrt{-1},\sqrt{2},\sqrt{5})$, whose Galois group is isomorphic to $\Z/2\Z \times \Z/2\Z \times \Z/2\Z$. The decomposition field of $(5)$ is
 			\[
 				K^d = \Q(\sqrt{-1},\sqrt{2}).
 			\]
@@ -380,6 +381,21 @@
 			\]
 			At this point we can only compute the field manually but after introducing ramification index things are much easier. 
 		\end{example}
+	
+		It is natural to think whether a decomposition group is normal, when the Galois group is non-abelian. For this question we have an pretty elegant result. 
+		
+		\begin{theorem}
+			Notation still being above, the decomposition group of $\sigma\mfk{P}$ where $\sigma \in \gal(L/K)$ is $\sigma G_\mfk{P}\sigma^{-1}$, i.e.
+			\[
+				G_{\sigma\mfk{P}} = \sigma G_\mfk{P}\sigma^{-1}.
+			\]
+		\end{theorem}
+		% TODO: Proof.
+		
+		\begin{theorem}
+			The field $L^d$ is the smallest subfield $E$ of $L$ containing $K$ such that $\mfk{P}$ is the only prime of $B$ lying above $\mfk{P} \cap E$.
+		\end{theorem}
+		% TODO: Proof.
 		\subsection{Automorphisms}
 	\section{Dedekind domain}
 		
