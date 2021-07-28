@@ -337,19 +337,20 @@
 			\[
 				5+0i = (2-i)(2+i).
 			\]
-			Since $\Z[i]$ is a PID, we only need to consider Gaussian integers that divide $5$. Keeping in mind that $\Z[i]$ is also an Euclidean domain, we have two non-trivial solutions up to $\pm 1$:
+			Since $\Z[i]$ is a PID, we only need to consider Gaussian integers that divide $5$. Keeping in mind that $\Z[i]$ is also an Euclidean domain, we have two non-trivial solutions up to units in $\Z[i]$:
 			\[
-				5 = (2-i)(2+i)=(1+2i)(1-2i).
+				5 = (2-i)(2+i).
 			\]
 			
-			As ideals, $(2-i) = (1+2i)$ because we can define an isomorphism $\varphi:(2-i) \to (1+2i)$ by $z \mapsto iz$ while $\varphi$ is also an automorphism. Since $2-i$ is irreducible in $\Z[i]$, we have found a prime ideal $\mfk{P}=(2-i)$ lies above $\mfk{p}$, and $\mfk{P}'=\sigma\mfk{P}=(2+i)$ has to be the remaining one. Note we have also established the factorisation of $5\Z[i]$ in the Dedekind domain $\OK$.
-			
-			This example also shows that the norm defined in theorem \ref{galois-lie-above} makes sense, because we have
-			\[
-				N_{\Q}^{K}(a+bi)=\prod_{\sigma \in \gal(K/\Q)}\sigma(a+bi) = (a+bi)(a-bi)=a^2+b^2.
-			\]
-			We will study norm extensively in the future. %TODO: add reference if it is needed.
+			As ideals, we have $(2-i)=(1+2i)=(-2+i)$. Since $2-i$ is irreducible in $\Z[i]$, we have found a prime ideal $\mfk{P}=(2-i)$ lies above $\mfk{p}$, and $\mfk{P}'=\sigma\mfk{P}=(2+i)$ has to be the remaining one. Note we have also established the factorisation of $5\Z[i]$ in the Dedekind domain $\OK$.
+				
 		\end{example}
+	
+		This example also shows that the norm defined in theorem \ref{galois-lie-above} makes sense, because we have
+		\[
+		N_{\Q}^{K}(a+bi)=\prod_{\sigma \in \gal(K/\Q)}\sigma(a+bi) = (a+bi)(a-bi)=a^2+b^2.
+		\]
+		We will study norm extensively in the future. %TODO: add reference if it is needed.
 		
 		\subsection{Inertia group and field}
 		\subsection{Automorphisms}
