@@ -74,6 +74,9 @@
 			\begin{theorem}\label{closure-f-g}
 				Let $A$ be an integrally closed Noetherian ring. Let $L$ be a finite separable extension of its quotient field $K$. Then the integral closure of $A$ in $L$ is finitely generated over $A$.
 			\end{theorem}
+		
+			By being integrally closed we mean the ring is integrally closed in its quotient field. Some mathematicians also say it is being normal, but I think \textit{normal} does not carry a lot of information.
+			
 			\begin{proof}
 				Since $A$ is Noetherian, all submodules of a finitely generated module over $A$ is finitely generated. Hence it suffices to prove that the integral closure of $A$ is contained in a finitely generated $A$-module.\\
 				Let $w_1,\dots,w_n$ be a basis of $L$ over $K$. After multiplying each $w_i$ by some suitable element of $A$ (see lemma \ref{alg-int}), we may assume without loss of generality that the $w_i$ are integral over $A$. To study the integral closure of $A$ in $L$, we pick an arbitrary element $z = b_1w_1+\cdots+b_nw_n$ and study its coefficients. \\
@@ -288,7 +291,9 @@
 				\]
 			\end{example}
 	\section{Galois extensions}
-		\subsection{Decomposition group and decomposition field}
+		\subsection{Special subgroups of the Galois group}
+			In this subsection we study the behaviour of Galois group with respect to integral closure, which can of course help us study number field and algebraic integers if we are interested in the extension itself.
+		
 			If $K$ is a Galois extension of $\Q$, then the Galois group allows us to transform amongst prime ideals in a natural way. This is because of the following theorem.
 			\[
 				\begin{tikzcd}
@@ -352,7 +357,16 @@
 		\]
 		We will study norm extensively in the future. %TODO: add reference if it is needed.
 		
-		\subsection{Inertia group and field}
+		Let $A$ be an integrally closed ring with quotient field $K$, and $B$ its integral closure in a finite Galois extension $L$. Then firstly $\sigma{B}=B$ for all $\sigma \in \gal(L/K)$ (Proof: $\sigma{B} \subset L$ is integral over $\sigma{A}=A$, hence has to be $B$ itself). Automorphisms fixing base field give rise to Galois group, and now we are interested in automorphisms that also fix ideals. 
+		
+		\begin{definition}
+			Notations being above, let $\mfk{p}$ be a maximal ideal of $A$, $\mfk{P}$ maximal in $B$ lying above $\mfk{p}$. Then the subgroup
+			\[
+				G_\mfk{P} = \{\sigma \in \gal(L/K):\sigma\mfk{P}=\mfk{P}\}
+			\]
+			is called the \textbf{decomposition group} of $\mfk{P}$. Its fixed field will be denoted by $L^d$, and will be called the \textbf{decomposition field} of $\mfk{P}$. 
+		\end{definition}
+		
 		\subsection{Automorphisms}
 	\section{Dedekind domain}
 		
