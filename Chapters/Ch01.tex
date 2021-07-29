@@ -357,7 +357,7 @@
 		\]
 		We will study norm extensively in the future. %TODO: add reference if it is needed.
 		
-		Let $A$ be an integrally closed ring with quotient field $K$, and $B$ its integral closure in a finite normal extension $L$. Then firstly $\sigma{B}=B$ for all $\sigma \in \gal(L/K)$ (Proof: $\sigma{B} \subset L$ is integral over $\sigma{A}=A$, hence has to be $B$ itself). Automorphisms fixing base field give rise to Galois group, and now we are interested in automorphisms that also fix ideals. 
+		Let $A$ be an integrally closed ring with quotient field $K$, and $B$ its integral closure in a finite Galois extension $L$. Then firstly $\sigma{B}=B$ for all $\sigma \in \gal(L/K)$ (Proof: $\sigma{B} \subset L$ is integral over $\sigma{A}=A$, hence has to be $B$ itself). Automorphisms fixing base field give rise to Galois group, and now we are interested in automorphisms that also fix ideals. 
 		
 		\begin{definition}
 			Notations being above, let $\mfk{p}$ be a maximal ideal of $A$, $\mfk{P}$ maximal in $B$ lying above $\mfk{p}$. Then the subgroup
@@ -406,10 +406,30 @@
 			
 			On the other hand, if $\lambda\sigma\mfk{P} = \sigma\mfk{P}$, we have $\lambda\sigma \in \sigma G_\mfk{P}$, hence $\lambda \in \sigma G_\mfk{P}\sigma^{-1}$, which is equivalent to say $G_{\sigma\mfk{P}} \subset \sigma G_\mfk{P} \sigma^{-1}$.
 		\end{proof}
+	
+		As for the field, we have a pretty concrete result:
+			
 		\begin{theorem}
-			The field $L^d$ is the smallest subfield $E$ of $L$ containing $K$ such that $\mfk{P}$ is the only prime of $B$ lying above $\mfk{P} \cap E$.
+			Assume $L/K$ is Galois and finite. The field $L^d$ is the smallest $E$ subfield of $L$ containing $K$ such that $\mfk{P}$ is the only prime of $B$ lying above $\mfk{P} \cap E$. 
 		\end{theorem}
-		% TODO: Proof.
+		\begin{proof}
+			Let $E$ be the smallest subfield of $L$ satisfying the property above, and write $\mfk{q} = \mfk{P} \cap E$. By the fundamental theorem of Galois theory ($L/E$ is Galois) and theorem \ref{galois-lie-above}, prime ideals of $B$ lying above $\mfk{q}$ differs by an element of $\gal(L/E)$. But by assumption there is only one such prime $\mfk{P}$, hence $H \subset G_\mfk{P}$ and therefore $E \supset L^d$.
+			
+			On the other hand, let $B^d$ be the integral closure of $A$ in $L^d$, and let $\mfk{Q}=\mfk{P} \cap B^d$. By theorem \ref{galois-lie-above}, $\mfk{P}$ is the only prime of $B$ lying above $\mfk{Q}$ in $B^d$. Hence $E \subset L^d$, which proves the theorem.
+		\end{proof}
+		
+		We are not done yet: the result can be even much sharpener:
+		
+		\begin{theorem}
+			Notation being above, the canonical injection $A/\mfk{p} \to B^d/\mfk{Q}$ is an isomorphism.
+		\end{theorem}
+		
+		\begin{proof}
+			% TODO: finish the proof.
+		\end{proof}
+		
+		% TODO: examples.
+		
 		\subsection{Automorphisms}
 	\section{Dedekind domain}
 		
