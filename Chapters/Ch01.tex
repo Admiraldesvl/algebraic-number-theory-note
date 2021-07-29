@@ -390,8 +390,22 @@
 				G_{\sigma\mfk{P}} = \sigma G_\mfk{P}\sigma^{-1}.
 			\]
 		\end{theorem}
-		% TODO: Proof.
-		
+		This theorem says, the Galois group acting on itself by conjugation yields all decomposition groups of primes of $B$ lying above a certain prime of $A$.
+		\begin{proof}
+			We can write $\gal(L/K) = \bigcup\sigma_jG_\mfk{P}$ as a coset decomposition. We claim this decomposition determines distinct prime ideals lying above $\mfk{p}$. Note
+			\[
+				\sigma\mfk{P}=\tau\mfk{P} \iff \tau^{-1}\sigma\mfk{P}=\mfk{P} \iff \tau^{-1}\sigma \in G_\mfk{P}
+			\]
+			which is equivalent to say $\tau$ and $\sigma$ lie in the same coset mod $G_\mfk{P}$. 
+			
+			This claim actually proves this theorem. On one hand, pick $\lambda \in G_\mfk{P}$, then
+			\[
+				\sigma\lambda\mfk{P} = \sigma\lambda\sigma^{-1}\sigma\mfk{P} = \sigma\mfk{P}
+			\]
+			Hence $\sigma G_{\mfk{P}}\sigma^{-1} \subset G_{\sigma\mfk{P}}$. Note we have used the fact that $\sigma\lambda,\sigma \in \sigma G_\mfk{P}$. 
+			
+			On the other hand, if $\lambda\sigma\mfk{P} = \sigma\mfk{P}$, we have $\lambda\sigma \in \sigma G_\mfk{P}$, hence $\lambda \in \sigma G_\mfk{P}\sigma^{-1}$, which is equivalent to say $G_{\sigma\mfk{P}} \subset \sigma G_\mfk{P} \sigma^{-1}$.
+		\end{proof}
 		\begin{theorem}
 			The field $L^d$ is the smallest subfield $E$ of $L$ containing $K$ such that $\mfk{P}$ is the only prime of $B$ lying above $\mfk{P} \cap E$.
 		\end{theorem}
