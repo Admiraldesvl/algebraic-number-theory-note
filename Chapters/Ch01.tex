@@ -421,11 +421,19 @@
 		We are not done yet: the result can be even much sharpener:
 		
 		\begin{theorem}
-			Notation being above, the canonical injection $A/\mfk{p} \to B^d/\mfk{Q}$ is an isomorphism.
+			Notation being above, the canonical injection $\varphi:A/\mfk{p} \to B^d/\mfk{Q}$ is an isomorphism.
 		\end{theorem}
 		
 		\begin{proof}
-			% TODO: finish the proof.
+			First of all we clarify what we mean by canonical injection:
+			\[
+				\varphi:x + \mfk{p} \mapsto x + \mfk{Q}.
+			\]
+			This is indeed injective because if if $\varphi(x+\mfk{p})=\mfk{Q}$, we have $x \in \mfk{Q}$. This gives
+			\[
+				x \in \mfk{Q} \cap A = (\mfk{P} \cap A) \cap B^d = \mfk{p} \cap B^d = \mfk{p}.
+			\]
+			It remains to prove that $\varphi$ is surjective. % TODO: Finish the proof.
 		\end{proof}
 		
 		% TODO: examples.
