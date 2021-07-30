@@ -28,7 +28,7 @@ If you want to contribute to this project but have no idea where to start, pleas
 2. Formatting correction.
 3. Small mathematical problems (for example, miscalculation can be corrected).
 4. Add examples at appropriate positions (but chances are I will modify them. Please try to follow the style of the book as well).
-5. check if the writing follows several guidelines for mathematics writing. If not, find out how to fix it for good reasons.
+5. Check if the writing follows several guidelines for mathematics writing. If not, find out how to fix it for good reasons.
 
 Writing Guidelines:
 
