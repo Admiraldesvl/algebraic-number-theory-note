@@ -337,143 +337,145 @@
 					\end{tikzcd}
 				\]
 			\end{proof}
-		\begin{example}\label{gauss-int-1}
-			Now take $K=\Q(i)$, $\OK=\Z[i]$ and $\mfk{p}=(5)$. Since $\gal(K/\Q)=\{1,\sigma\}$ where $\sigma$ is the complex conjugation, there are at most two prime ideals lying above $\mfk{p}$. First of all $5\Z[i]$ is not prime because 
-			\[
-				5+0i = (2-i)(2+i).
-			\]
-			Since $\Z[i]$ is a PID, we only need to consider Gaussian integers that divide $5$. Keeping in mind that $\Z[i]$ is also an Euclidean domain, we have two non-trivial solutions up to units in $\Z[i]$:
-			\[
-				5 = (2-i)(2+i).
-			\]
-			
-			As ideals, we have $(2-i)=(1+2i)=(-2+i)$. Since $2-i$ is irreducible in $\Z[i]$, we have found a prime ideal $\mfk{P}=(2-i)$ lies above $\mfk{p}$, and $\mfk{P}'=\sigma\mfk{P}=(2+i)$ has to be the remaining one. Note we have also established the factorisation of $5\Z[i]$ in the Dedekind domain $\OK$.
+			\begin{example}\label{gauss-int-1}
+				Now take $K=\Q(i)$, $\OK=\Z[i]$ and $\mfk{p}=(5)$. Since $\gal(K/\Q)=\{1,\sigma\}$ where $\sigma$ is the complex conjugation, there are at most two prime ideals lying above $\mfk{p}$. First of all $5\Z[i]$ is not prime because 
+				\[
+					5+0i = (2-i)(2+i).
+				\]
+				Since $\Z[i]$ is a PID, we only need to consider Gaussian integers that divide $5$. Keeping in mind that $\Z[i]$ is also an Euclidean domain, we have two non-trivial solutions up to units in $\Z[i]$:
+				\[
+					5 = (2-i)(2+i).
+				\]
 				
-		\end{example}
-	
-		This example also shows that the norm defined in theorem \ref{galois-lie-above} makes sense, because we have
-		\[
-		N_{\Q}^{K}(a+bi)=\prod_{\sigma \in \gal(K/\Q)}\sigma(a+bi) = (a+bi)(a-bi)=a^2+b^2.
-		\]
-		We will study norm extensively in the future. %TODO: add reference if it is needed.
-		
-		Let $A$ be an integrally closed ring with quotient field $K$, and $B$ its integral closure in a finite Galois extension $L$. Then firstly $\sigma{B}=B$ for all $\sigma \in \gal(L/K)$ (Proof: $\sigma{B} \subset L$ is integral over $\sigma{A}=A$, hence has to be $B$ itself). Automorphisms fixing base field give rise to Galois group, and now we are interested in automorphisms that also fix ideals. 
-		
-		\subsubsection{Decomposition group}
-		
-			\begin{definition}
-				Notations being above, let $\mfk{p}$ be a maximal ideal of $A$, $\mfk{P}$ maximal in $B$ lying above $\mfk{p}$. Then the subgroup
-				\[
-					G_\mfk{P} = \{\sigma \in \gal(L/K):\sigma\mfk{P}=\mfk{P}\}
-				\]
-				is called the \textbf{decomposition group} of $\mfk{P}$. Its fixed field will be denoted by $L^d$, and will be called the \textbf{decomposition field} of $\mfk{P}$. 
-			\end{definition}
-			Two non-trivial examples are given, abelian and non-abelian. We will frequently return to these examples after new concepts are introduced. 
-			% TODO: expand details of these two examples.
-			\begin{example}
-				Consider $K = \Q(\sqrt{-1},\sqrt{2},\sqrt{5})$, whose Galois group is isomorphic to $\Z/2\Z \times \Z/2\Z \times \Z/2\Z$. The decomposition field of $(5)$ is
-				\[
-					K^d = \Q(\sqrt{-1},\sqrt{2}).
-				\]
-			\end{example}
-			\begin{example}
-				Consider $K = \Q(\sqrt[3]{19},\omega)$ where $\omega = e^{2\pi i/3}$. The Galois group is $S_3$. The decomposition fields of $(3)$ are
-				\[
-					\Q(\sqrt[3]{19}),\quad \Q(\omega\sqrt[3]{19}),\quad\Q(\omega^2\sqrt[3]{19}).
-				\]
-				At this point we can only compute the field manually but after introducing ramification index things are much easier. 
+				As ideals, we have $(2-i)=(1+2i)=(-2+i)$. Since $2-i$ is irreducible in $\Z[i]$, we have found a prime ideal $\mfk{P}=(2-i)$ lies above $\mfk{p}$, and $\mfk{P}'=\sigma\mfk{P}=(2+i)$ has to be the remaining one. Note we have also established the factorisation of $5\Z[i]$ in the Dedekind domain $\OK$.
+					
 			\end{example}
 		
-			It is natural to think whether a decomposition group is normal, when the Galois group is non-abelian. For this question we have an pretty elegant result. 
+			This example also shows that the norm defined in theorem \ref{galois-lie-above} makes sense, because we have
+			\[
+			N_{\Q}^{K}(a+bi)=\prod_{\sigma \in \gal(K/\Q)}\sigma(a+bi) = (a+bi)(a-bi)=a^2+b^2.
+			\]
+			We will study norm extensively in the future. %TODO: add reference if it is needed.
 			
-			\begin{theorem}
-				Notation still being above, the decomposition group of $\sigma\mfk{P}$ where $\sigma \in \gal(L/K)$ is $\sigma G_\mfk{P}\sigma^{-1}$, i.e.
-				\[
-					G_{\sigma\mfk{P}} = \sigma G_\mfk{P}\sigma^{-1}.
-				\]
-			\end{theorem}
-			This theorem says, the Galois group acting on itself by conjugation yields all decomposition groups of primes of $B$ lying above a certain prime of $A$.
-			\begin{proof}
-				We can write $\gal(L/K) = \bigcup\sigma_jG_\mfk{P}$ as a coset decomposition. We claim this decomposition determines distinct prime ideals lying above $\mfk{p}$. Note
-				\[
-					\sigma\mfk{P}=\tau\mfk{P} \iff \tau^{-1}\sigma\mfk{P}=\mfk{P} \iff \tau^{-1}\sigma \in G_\mfk{P}
-				\]
-				which is equivalent to say $\tau$ and $\sigma$ lie in the same coset mod $G_\mfk{P}$. 
-				
-				This claim actually proves this theorem. On one hand, pick $\lambda \in G_\mfk{P}$, then
-				\[
-					\sigma\lambda\mfk{P} = \sigma\lambda\sigma^{-1}\sigma\mfk{P} = \sigma\mfk{P}
-				\]
-				Hence $\sigma G_{\mfk{P}}\sigma^{-1} \subset G_{\sigma\mfk{P}}$. Note we have used the fact that $\sigma\lambda,\sigma \in \sigma G_\mfk{P}$. 
-				
-				On the other hand, if $\lambda\sigma\mfk{P} = \sigma\mfk{P}$, we have $\lambda\sigma \in \sigma G_\mfk{P}$, hence $\lambda \in \sigma G_\mfk{P}\sigma^{-1}$, which is equivalent to say $G_{\sigma\mfk{P}} \subset \sigma G_\mfk{P} \sigma^{-1}$.
-			\end{proof}
-		
-			As for the field, we have a pretty concrete result:
-				
-			\begin{theorem}
-				Assume $L/K$ is Galois and finite. The field $L^d$ is the smallest $E$ subfield of $L$ containing $K$ such that $\mfk{P}$ is the only prime of $B$ lying above $\mfk{P} \cap E$. 
-			\end{theorem}
-			\begin{proof}
-				Let $E$ be the smallest subfield of $L$ satisfying the property above, and write $\mfk{q} = \mfk{P} \cap E$. By the fundamental theorem of Galois theory ($L/E$ is Galois) and theorem \ref{galois-lie-above}, prime ideals of $B$ lying above $\mfk{q}$ differs by an element of $\gal(L/E)$. But by assumption there is only one such prime $\mfk{P}$, hence $H \subset G_\mfk{P}$ and therefore $E \supset L^d$.
-				
-				On the other hand, let $B^d$ be the integral closure of $A$ in $L^d$ (which is Dedekind as well), and let $\mfk{Q}=\mfk{P} \cap B^d$. By theorem \ref{galois-lie-above}, $\mfk{P}$ is the only prime of $B$ lying above $\mfk{Q}$ in $B^d$. Hence $E \subset L^d$, which proves the theorem.
-			\end{proof}
+			Let $A$ be an integrally closed ring with quotient field $K$, and $B$ its integral closure in a finite Galois extension $L$. Then firstly $\sigma{B}=B$ for all $\sigma \in \gal(L/K)$ (Proof: $\sigma{B} \subset L$ is integral over $\sigma{A}=A$, hence has to be $B$ itself). Automorphisms fixing base field give rise to Galois group, and now we are interested in automorphisms that also fix ideals. 
 			
-			We are not done yet: the result can be even much sharpener:
+			\subsubsection{Decomposition groups and fields}
 			
-			\begin{theorem}
-				Notation being above, the canonical injection $\varphi:A/\mfk{p} \to B^d/\mfk{Q}$ is an isomorphism.
-			\end{theorem}
+				\begin{definition}
+					Notations being above, let $\mfk{p}$ be a maximal ideal of $A$, $\mfk{P}$ maximal in $B$ lying above $\mfk{p}$. Then the subgroup
+					\[
+						G_\mfk{P} = \{\sigma \in \gal(L/K):\sigma\mfk{P}=\mfk{P}\}
+					\]
+					is called the \textbf{decomposition group} of $\mfk{P}$. Its fixed field will be denoted by $L^d$, and will be called the \textbf{decomposition field} of $\mfk{P}$. 
+				\end{definition}
+				Two non-trivial examples are given, abelian and non-abelian. We will frequently return to these examples after new concepts are introduced. 
+				% TODO: expand details of these two examples.
+				\begin{example}
+					Consider $K = \Q(\sqrt{-1},\sqrt{2},\sqrt{5})$, whose Galois group is isomorphic to $\Z/2\Z \times \Z/2\Z \times \Z/2\Z$. The decomposition field of $(5)$ is
+					\[
+						K^d = \Q(\sqrt{-1},\sqrt{2}).
+					\]
+				\end{example}
+				\begin{example}
+					Consider $K = \Q(\sqrt[3]{19},\omega)$ where $\omega = e^{2\pi i/3}$. The Galois group is $S_3$. The decomposition fields of $(3)$ are
+					\[
+						\Q(\sqrt[3]{19}),\quad \Q(\omega\sqrt[3]{19}),\quad\Q(\omega^2\sqrt[3]{19}).
+					\]
+					At this point we can only compute the field manually but after introducing ramification index things are much easier. 
+				\end{example}
 			
-			\begin{proof}
-				First of all we clarify what we mean by canonical injection:
-				\[
-					\varphi:x + \mfk{p} \mapsto x + \mfk{Q}.
-				\]
+				It is natural to think whether a decomposition group is normal, when the Galois group is non-abelian. For this question we have an pretty elegant result. 
 				
-				This is indeed injective because if if $\varphi(x+\mfk{p})=\mfk{Q}$, we have $x \in \mfk{Q}$. This gives
-				\[
-					x \in \mfk{Q} \cap A = (\mfk{P} \cap A) \cap B^d = \mfk{p} \cap B^d = \mfk{p}.
-				\]
-				
-				It remains to prove that $\varphi$ is surjective. Given $x + \mfk{Q} \in B^d/\mfk{Q}$, we need to find an element $z \in A$ such that $\varphi(z) = x + \mfk{Q}$. 
-				
-				Pick $\sigma \in \gal(L/K) \setminus G_\mfk{P}$. Let
-				\[
-					\mfk{Q}_\sigma = \sigma^{-1}\mfk{P} \cap B^d.
-				\]
-				Then $\mfk{Q}_\sigma \ne \mfk{Q}$ (they are two distinct primes and are maximal because $B^d$ is Dedekind). Let $x$ be an element of $B^d$. By Chinese remainder theorem, there exists an element $y \in B^d$ such that
-				\[
-					\begin{aligned}
-						y &\equiv x \mod \mfk{Q}, \\
-						y &\equiv 1 \mod \mfk{Q}_\sigma.
-					\end{aligned}
-				\]
-				Hence in particular,
-				\[
-					\begin{aligned}
-						y &\equiv x \mod \mfk{P}, \\
-						y &\equiv 1 \mod \sigma^{-1}\mfk{P}.
-					\end{aligned}
-				\]
-				The second congruence gives
-				\[
-					\sigma{y} \equiv 1 \mod \mfk{P}.
-				\]
-				Note this holds for all $\sigma \not \in G_\mfk{P}$. For $\lambda \in G_\mfk{P}$, we have $\sigma{y}=y \equiv x \mod \mfk{Q}$. Thus we obtain
-				\[
-					z=N_K^L(y) \equiv x \mod \mfk{P}.
-				\]
-				First of all $z \in K$ by definition of norm. Since $z$ is integral over $A$, it has to be an element in $A$. We also have % TODO: 'definition of norm' deserves more explanation.
-				\[
-					z \equiv x \mod \mfk{Q}
-				\]
-				because both $z$ and $x$ lie in $B^d$. Hence we obtain $\varphi(z) = x + \mfk{P}$ as we wanted.
-			\end{proof}
+				\begin{theorem}
+					Notation still being above, the decomposition group of $\sigma\mfk{P}$ where $\sigma \in \gal(L/K)$ is $\sigma G_\mfk{P}\sigma^{-1}$, i.e.
+					\[
+						G_{\sigma\mfk{P}} = \sigma G_\mfk{P}\sigma^{-1}.
+					\]
+				\end{theorem}
+				This theorem says, the Galois group acting on itself by conjugation yields all decomposition groups of primes of $B$ lying above a certain prime of $A$.
+				\begin{proof}
+					We can write $\gal(L/K) = \bigcup\sigma_jG_\mfk{P}$ as a coset decomposition. We claim this decomposition determines distinct prime ideals lying above $\mfk{p}$. Note
+					\[
+						\sigma\mfk{P}=\tau\mfk{P} \iff \tau^{-1}\sigma\mfk{P}=\mfk{P} \iff \tau^{-1}\sigma \in G_\mfk{P}
+					\]
+					which is equivalent to say $\tau$ and $\sigma$ lie in the same coset mod $G_\mfk{P}$. 
+					
+					This claim actually proves this theorem. On one hand, pick $\lambda \in G_\mfk{P}$, then
+					\[
+						\sigma\lambda\mfk{P} = \sigma\lambda\sigma^{-1}\sigma\mfk{P} = \sigma\mfk{P}
+					\]
+					Hence $\sigma G_{\mfk{P}}\sigma^{-1} \subset G_{\sigma\mfk{P}}$. Note we have used the fact that $\sigma\lambda,\sigma \in \sigma G_\mfk{P}$. 
+					
+					On the other hand, if $\lambda\sigma\mfk{P} = \sigma\mfk{P}$, we have $\lambda\sigma \in \sigma G_\mfk{P}$, hence $\lambda \in \sigma G_\mfk{P}\sigma^{-1}$, which is equivalent to say $G_{\sigma\mfk{P}} \subset \sigma G_\mfk{P} \sigma^{-1}$.
+				\end{proof}
 			
-			% TODO: examples.
-		
+				As for the field, we have a pretty concrete result:
+					
+				\begin{theorem}
+					Assume $L/K$ is Galois and finite. The field $L^d$ is the smallest $E$ subfield of $L$ containing $K$ such that $\mfk{P}$ is the only prime of $B$ lying above $\mfk{P} \cap E$. 
+				\end{theorem}
+				\begin{proof}
+					Let $E$ be the smallest subfield of $L$ satisfying the property above, and write $\mfk{q} = \mfk{P} \cap E$. By the fundamental theorem of Galois theory ($L/E$ is Galois) and theorem \ref{galois-lie-above}, prime ideals of $B$ lying above $\mfk{q}$ differs by an element of $\gal(L/E)$. But by assumption there is only one such prime $\mfk{P}$, hence $H \subset G_\mfk{P}$ and therefore $E \supset L^d$.
+					
+					On the other hand, let $B^d$ be the integral closure of $A$ in $L^d$ (which is Dedekind as well), and let $\mfk{Q}=\mfk{P} \cap B^d$. By theorem \ref{galois-lie-above}, $\mfk{P}$ is the only prime of $B$ lying above $\mfk{Q}$ in $B^d$. Hence $E \subset L^d$, which proves the theorem.
+				\end{proof}
+				
+				We are not done yet: the result can be even much sharpener:
+				
+				\begin{theorem}
+					Notation being above, the canonical injection $\varphi:A/\mfk{p} \to B^d/\mfk{Q}$ is an isomorphism.
+				\end{theorem}
+				
+				\begin{proof}
+					First of all we clarify what we mean by canonical injection:
+					\[
+						\varphi:x + \mfk{p} \mapsto x + \mfk{Q}.
+					\]
+					
+					This is indeed injective because if if $\varphi(x+\mfk{p})=\mfk{Q}$, we have $x \in \mfk{Q}$. This gives
+					\[
+						x \in \mfk{Q} \cap A = (\mfk{P} \cap A) \cap B^d = \mfk{p} \cap B^d = \mfk{p}.
+					\]
+					
+					It remains to prove that $\varphi$ is surjective. Given $x + \mfk{Q} \in B^d/\mfk{Q}$, we need to find an element $z \in A$ such that $\varphi(z) = x + \mfk{Q}$. 
+					
+					Pick $\sigma \in \gal(L/K) \setminus G_\mfk{P}$. Let
+					\[
+						\mfk{Q}_\sigma = \sigma^{-1}\mfk{P} \cap B^d.
+					\]
+					Then $\mfk{Q}_\sigma \ne \mfk{Q}$ (they are two distinct primes and are maximal because $B^d$ is Dedekind). Let $x$ be an element of $B^d$. By Chinese remainder theorem, there exists an element $y \in B^d$ such that
+					\[
+						\begin{aligned}
+							y &\equiv x \mod \mfk{Q}, \\
+							y &\equiv 1 \mod \mfk{Q}_\sigma.
+						\end{aligned}
+					\]
+					Hence in particular,
+					\[
+						\begin{aligned}
+							y &\equiv x \mod \mfk{P}, \\
+							y &\equiv 1 \mod \sigma^{-1}\mfk{P}.
+						\end{aligned}
+					\]
+					The second congruence gives
+					\[
+						\sigma{y} \equiv 1 \mod \mfk{P}.
+					\]
+					Note this holds for all $\sigma \not \in G_\mfk{P}$. For $\lambda \in G_\mfk{P}$, we have $\sigma{y}=y \equiv x \mod \mfk{Q}$. Thus we obtain
+					\[
+						z=N_K^L(y) \equiv x \mod \mfk{P}.
+					\]
+					First of all $z \in K$ by definition of norm. Since $z$ is integral over $A$, it has to be an element in $A$. We also have % TODO: 'definition of norm' deserves more explanation.
+					\[
+						z \equiv x \mod \mfk{Q}
+					\]
+					because both $z$ and $x$ lie in $B^d$. Hence we obtain $\varphi(z) = x + \mfk{P}$ as we wanted.
+				\end{proof}
+				
+				% TODO: examples.
+			
+			\subsubsection{Ineteria groups and fields}
+
 		\subsection{Automorphisms}
 	\section{Dedekind domain}
 		
