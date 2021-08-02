@@ -483,8 +483,30 @@
 		% TODO: Daniel Chapter 3.
 		\subsection{Ramification index}
 		
-		\subsection{Norm}
-		
+		\subsection{The norm and trace}
+			We used the concept of norm and trace at the very beginning. Here is a good chance to study them extensively. Recall for $\mathds{C}$ and $\mathds{R}$ we have a natural faithful representation
+			\[
+				\begin{aligned}
+					\rho:\mathds{C} &\to End(\mathds{R}^2) \\
+							a+bi   &\mapsto \begin{pmatrix} a & -b \\ b & a \end{pmatrix}.
+				\end{aligned}
+			\]
+			Note $|\rho(a+bi)|=a^2+b^2$, which is pretty close to the norm in analysis. It is not a good idea to take square root in the sense of algebra so we directly use the determinant. We will also be using trace of such matrices.
+			\begin{definition}
+				Let $E$ be a finite extension of $k$, which we view as a finite dimensional vector space over $k$. Each $\alpha \in E$ induces a linear map by multiplication:
+				\[
+					\begin{aligned}
+						m_\alpha : E &\to E \\
+								x &\mapsto \alpha{x}.
+					\end{aligned}
+				\]
+				We define the norm and trace from $E$ to $k$ by
+				\[
+					\det(m_\alpha)=N_k^E(\alpha), \quad \tr(m_\alpha)=\tr_k^E(\alpha).
+				\]
+			\end{definition}
+			% TODO: formula of norm and trace.
+			% TODO: further properties.
 		\subsection{Discrete valuation rings}
 			A \textbf{discrete valuation ring} can be considered as a localisation of Dedekind domain. Indeed, if $A$ is a discrete valuation ring, then $A$ is Noetherian and of Krull dimension $1$, and is integrally closed, hence Dedekind. If $A$ is local and Dedekind, then $A$ is a discrete valuation ring. In general, a Noetherian domain $A$ of Krull dimension one is Dedekind if and only if the localisation $A_\mfk{p}$ is a discrete valuation ring for all prime $\mfk{p}$. With respect to localisation we have a natural result:
 			\begin{theorem}
