@@ -50,6 +50,35 @@
 			
 			\subsubsection{The Cyclotomic Fields}
 				Let $\omega = e^{2\pi i/m}$. This is the $m$-th root of $1$. If $\lambda$ is a conjugate of $\omega$, i.e. they both are roots of the same irreducible polynomial over $\Q$, then $\lambda$ is also an $m$-th root of $1$ and is not an $n$-th root of $1$ whenever $n<m$. If we find these $\lambda$, we have a better understanding of $\Q(\omega)$, which is called the cyclotomic field.
+				
+				For a specific field $k$, the question arises whether the image of $\gal(K(\omega)/K)$ in $(\Z/n\Z)^\ast$ is all of $(\Z/n\Z)^\ast$. Looking at $k=\mathds{R}$ or $k=\mathds{C}$, this is not always the case. We give an example on when it is the case.
+				\begin{theorem}
+					Let $\omega$ be a $m$-th root of unity, then
+					\[
+						[\Q(\omega):\Q] = \varphi(m)
+					\]
+					where $\varphi$ is the Euler function.
+				\end{theorem}
+				\begin{proof}
+					Let $f(X)$ be the minimal polynomial of $\omega$ over $\Q$. Then $f(X)$ divides $X^m-1$, and we can write $X^m-1=f(X)h(X)$, where both $f$ and $h$ have leading coefficient $1$. By the Gauss lemma, $f$ and $h$ have integral coefficients. We shall now prove that if $p$ is a prime number not dividing $n$, then $\omega^p$ is also a root of $f$.
+					
+					% TODO: Finish the proof
+				\end{proof}
+				\begin{corollary}
+					We have an isomorphism
+					\[
+						\gal(\Q(\omega):\Q) \cong (\Z/n\Z)^\ast.
+					\]
+				\end{corollary}
+			
+				\begin{corollary}
+					If $n,m$ are relative prime integers $\ge 1$, then
+					\[
+						\Q(\omega_n) \cap \Q(\omega_m) = \Q.
+					\]
+				\end{corollary}
+			
+				We will prove that the cyclotomic integers (i.e. the algebraic integer with respect to $\Q(\omega)/\Q$) is actually $\Z[\omega]$. This is a highly non-trivial result and we can only deliver the proof after further study on prime ideals.
 				% TODO: Finish this section and the study of Z[\omega]. Source can be found on Daniel A. Marcus.
 		\subsection{Algebraic extension and integral closure}
 			First of all we show that being algebraic almost implies being integral. 
