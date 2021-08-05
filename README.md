@@ -13,8 +13,8 @@ The author of this project claims no contribution on the advancement to mathemat
 If you are interested in reading it before it is officially released, please follow the following:
 
 1. Download the code using whatever way you want (download zip, clone, github desktop, etc).
-2. Open the folder (if you downloaded zip, you may need to extract the whole directory) and double-click `main.tex`.
-3. Compile it via `pdfLaTeX` using whatever LaTeX editor you use. For the record, I'm using the latest version of TeXstudio.
+2. Open the folder (if you have downloaded zip, you may need to extract all files) and open `main.tex` using whatever LaTeX editor you use. For the record, I'm using the latest version of TeXstudio.
+3. Compile it via `pdfLaTeX`. This is given by the book template so other compiling commands are not recommended.
 4. You cannot get pdf file in other ways because uploading binary files in a repository is not a good idea.
 
 If you are considering contributing to this project, distributing it, or whatever not about simply reading it, please consider the following:
@@ -28,9 +28,10 @@ If you want to contribute to this project but have no idea where to start, pleas
 
 1. Typo correction (easiest but always welcomed. But please not changing UK spelling to US spelling is not considered).
 2. Formatting correction.
-3. Small mathematical problems (for example, miscalculation can be corrected).
-4. Add examples at appropriate positions (but chances are I will modify them. Please try to follow the style of the book as well).
-5. Check if the writing follows several guidelines for mathematics writing. If not, find out how to fix it for good reasons.
+3. Small mathematical problems (for example, miscalculation can be corrected). 
+4. Whenever you find something mathematically wrong, please don't hesitate give a feedback.
+5. Add examples at appropriate positions (but chances are I will modify them. Please try to follow the style of the book as well).
+6. Check if the writing follows several guidelines for mathematics writing. If not, find out how to fix it for good reasons.
 
 Writing Guidelines:
 
