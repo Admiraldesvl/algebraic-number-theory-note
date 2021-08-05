@@ -29,7 +29,7 @@ If you want to contribute to this project but have no idea where to start, pleas
 1. Typo correction (easiest but always welcomed. But please not changing UK spelling to US spelling is not considered).
 2. Formatting correction.
 3. Small mathematical problems (for example, miscalculation can be corrected). 
-4. Whenever you find something mathematically wrong, please don't hesitate give a feedback.
+4. Whenever you find something mathematically wrong, please do not hesitate to give a feedback.
 5. Add examples at appropriate positions (but chances are I will modify them. Please try to follow the style of the book as well).
 6. Check if the writing follows several guidelines for mathematics writing. If not, find out how to fix it for good reasons.
 
