@@ -2,6 +2,7 @@
 	\setcounter{page}{1}
 	\pagenumbering{arabic}
 	\section{Integral closure and algebraic integers}
+		Here we present fundamental properties of algebraic integers and related theories. It is not our intention to do a treatise of commutative algebra and Galois theory, so for example there would not be the fundamental theorem of Galois theory, or the definition of Dedekind domain. However, if some theorems are explicitly useful in the future, you will still see the theorem and the proof.
 		\subsection{Definition and examples}
 			Problems in solving polynomial equations give rise to a lot of concepts in algebra and geometry. If we are specifically interested in $\mds{Z}$, we have the concept of \textbf{algebraic integers}.
 			\begin{definition}
@@ -153,7 +154,7 @@
 		
 		\subsection{Localisation}
 		
-			\begin{theorem}
+			\begin{theorem}\label{int-clo-loc}
 				Let $A \subset B$ be rings, and $S$ a multiplicatively closed subset of $A$. If $B$ is integral over $A$, then $S^{-1}B$ is integrally closed in $S^{-1}A$. If $C$ is the integral closure of $A$ in $B$, then $S^{-1}C$ is the integral closure of $S^{-1}A$. 
 			\end{theorem}
 		
@@ -185,6 +186,31 @@
 			\begin{corollary}
 				If $B$ is the integral closure of $A$ in some field extension $L$ of the quotient field of $A$, then $S^{-1}B$ is the integral closure of $S^{-1}A$ in $L$.
 			\end{corollary}
+			
+			Being integrally closed is also a local property. And we will use it to prove that the algebraic integers in the field $\Q(\omega)$ is $\Z[\omega]$.
+			\begin{corollary}
+				Let $A$ be an integral domain. Then the following are equivalent:
+				\begin{enumerate}
+					\item $A$ is integrally closed.
+					\item $A_\mfk{p}$ is integrally closed for each prime ideal $\mfk{p}$. 
+					\item $A_\mfk{m}$ is integrally closed for each maximal ideal $\mfk{m}$.
+				\end{enumerate}
+			\end{corollary}
+		
+			\begin{proof}
+				Let $K$ be the quotient field of $A$, let $C$ be the integral closure of $A$ in $K$, and let $f:A \to C$ be the canonical embedding. Then $A$ is integrally closed if and only if $f$ is surjective.
+				
+				On the other hand, by theorem \ref{int-clo-loc}, $A_\mfk{p}$ (respectively $A_\mfk{m}$) is integrally closed if and only if $f_\mfk{p}$ (respectively $f_\mfk{m}$) is surjective.
+				
+				However, a $A$-module homomorphism $\phi:M \to N$ being surjective is a local property \href{https://www.maths.usyd.edu.au/u/de/AGR/CommutativeAlgebra/pp600-610.pdf}{[proof]}. Therefore we have
+				\[
+					\begin{aligned}
+						A \text{ is integrally closed } &\iff f \text{ is surjective } \\
+														&\iff f_\mfk{p} \text{ is surjective } \iff A_\mfk{p} \text{ is integrally closed } \\
+														&\iff f_\mfk{m} \text{ is integrally closed } \iff A_\mfk{m} \text{ is integrally closed.}
+					\end{aligned}
+				\]
+			\end{proof}
 			
 			% TODO: ADD SOME EXAMPLES
 		\subsection{Prime Ideals}
