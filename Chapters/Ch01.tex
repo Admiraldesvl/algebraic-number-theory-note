@@ -50,20 +50,54 @@
 			It also turns out that many properties are not restricted to $\Z$, but to a specific class of rings. Hence we will investigate some properties in the sense of commutative ring theory. The next example deserves more discussion.
 			
 			\subsubsection{The Cyclotomic Fields}
-				Let $\omega = e^{2\pi i/m}$. This is the $m$-th root of $1$. If $\lambda$ is a conjugate of $\omega$, i.e. they both are roots of the same irreducible polynomial over $\Q$, then $\lambda$ is also an $m$-th root of $1$ and is not an $n$-th root of $1$ whenever $n<m$. If we find these $\lambda$, we have a better understanding of $\Q(\omega)$, which is called the cyclotomic field.
+				Let $\omega = e^{2\pi i/m}$. This is the $m$-th root of $1$. If $\lambda$ is a conjugate of $\omega$, i.e. they both are roots of the same irreducible polynomial over $\Q$, then $\lambda$ is also an $m$-th root of $1$ and is not an $n$-th root of $1$ whenever $n<m$. If we find these $\lambda$, we have a better understanding of $\Q(\omega)$, which is called the cyclotomic field. We will do this in a general setting.
+				
+				\begin{definition}
+					Let $k$ be a field. By a \textbf{root of unity} in $k$ we shall mean an element $\xi \in k$ such that $\xi^n=1$ for some integer $n \ge 1$. Let $n$ be a integer $\ge 2$ and not divisible by the characteristic. The generator for the cyclic group $\bm{\mu}_n$ of $n$-th root of unity is called \textbf{primitive}.
+				\end{definition}
+				
+				\begin{remark}
+					We shall not ignore the characteristic of $k$. Indeed, if the characteristic is $p$, then the equation
+					\[
+						X^{p^m}-1=0
+					\]
+					has only one root, namely $1$, and hence there is no $p^m$-th root of unity except $1$.
+				\end{remark}
+				\begin{remark}
+					$\bm{\mu}_n$ has $n$ elements. The derivative of $X^n-1$ is $nX^{n-1} \ne 0$, and the only root of the derivative is $0$, so there is no common root. In the algebraic closure of $k$, the polynomial $X^n-1$ has $n$ distinct roots, which forms $\bm{\mu}_n$.
+				\end{remark}
 				
 				For a specific field $k$, the question arises whether the image of $\gal(K(\omega)/K)$ in $(\Z/n\Z)^\ast$ is all of $(\Z/n\Z)^\ast$. Looking at $k=\mathds{R}$ or $k=\mathds{C}$, this is not always the case. We give an example on when it is the case.
 				\begin{theorem}
-					Let $\omega$ be a $m$-th root of unity, then
+					Let $\omega$ be a primitive $n$-th root of unity, then
 					\[
-						[\Q(\omega):\Q] = \varphi(m)
+						[\Q(\omega):\Q] = \varphi(n)
 					\]
 					where $\varphi$ is the Euler function.
 				\end{theorem}
 				\begin{proof}
-					Let $f(X)$ be the minimal polynomial of $\omega$ over $\Q$. Then $f(X)$ divides $X^m-1$, and we can write $X^m-1=f(X)h(X)$, where both $f$ and $h$ have leading coefficient $1$. By the Gauss lemma, $f$ and $h$ have integral coefficients. We shall now prove that if $p$ is a prime number not dividing $n$, then $\omega^p$ is also a root of $f$.
+					Let $f(X)$ be the minimal polynomial of $\omega$ over $\Q$. Then $f(X)$ divides $X^n-1$, and we can write $X^n-1=f(X)h(X)$, where both $f$ and $h$ have leading coefficient $1$. By the Gauss lemma, $f$ and $h$ have integral coefficients. We shall now prove that if $p$ is a prime number not dividing $n$, then $\omega^p$ is also a root of $f$.
 					
-					% TODO: Finish the proof
+					Suppose $\phi^p$ is not a root of $f$, then it is a root of $h$, and $\phi$ is a root of $h(X^p)$. Hence $f$ divides $h(X^p)$ as well, so we write
+					\[
+						h(X^p)=f(X)g(X).
+					\]
+					Note $g$ has integral coefficients as well. Since $a^p \cong a \mod p$ for any integer $a$, we have
+					\[
+						h(X^p) \equiv h(X)^p \mod p,
+					\]
+					and therefore
+					\[
+						h(X)^p \equiv f(X)g(X) \mod p.
+					\]
+					Let $\overline{f}$ and $\overline{h}$ be the canonical image of $f$ and $h$ in $\Z/p\Z[X]$, we see that $f$ and $h$ are not relatively prime, hence have common factor(s). But if follows that
+					\[
+						X^n-\overline{1}=\overline{f}(X)\overline{g}(X)
+					\]
+					has multiple rules, which contradicts the remark we have made at the beginning.
+					
+					Since $\omega^p$ is also a primitive $n$-th root of unity, and any primitive $n$-th root of unity can be obtained by raising $\omega$ to a succession of prime powers with primes not dividing $n$, this implies that all primitive $n$-th roots of unity are roots of $f$, which forces the degree of $f$ to be not less than $\varphi(n).$
+					% TODO: Finish the proof of \le \varphi(m)
 				\end{proof}
 				\begin{corollary}
 					We have an isomorphism
