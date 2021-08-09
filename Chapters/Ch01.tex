@@ -67,22 +67,42 @@
 					$\bm{\mu}_n$ has $n$ elements. The derivative of $X^n-1$ is $nX^{n-1} \ne 0$, and the only root of the derivative is $0$, so there is no common root. In the algebraic closure of $k$, the polynomial $X^n-1$ has $n$ distinct roots, which forms $\bm{\mu}_n$.
 				\end{remark}
 				
+				The field extension in terms of root of unity can always be characterised for $(\Z/n\Z)^\ast$ as follows:
+				
+				\begin{theorem}\label{gal-cyclotomic}
+					Let $k$ be any field, let $n$ be not divisible by the characteristic $p$. Let $\omega$ be a primitive $n$-th root of unity in the algebraic closure $k^\mathrm{a}$, then $\gal(k(\omega)/k)$ is a subgroup of $(\Z/n\Z)^\ast$.
+				\end{theorem}
+				
+				\begin{proof}
+					Let $\sigma$ be an embedding of $k(\omega)$ in $k^\mathrm{a}$ over $k$. Then
+					\[
+						(\sigma\omega)^n = \sigma(\omega^n)=1
+					\]
+					hence $\sigma\omega$ is also an $n$-th root of unity. It follows that $\sigma\omega=\omega^i$ for some $i=i(\sigma)$ as $\omega$ is primitive. $i(\sigma)$ is uniquely determined mod $n$. It follows that $\sigma$ maps $k(\omega)$ into itself, and hence $k(\omega)$ is normal over $k$. If $\tau$ is another automorphism of $k(\omega)$ over $k$, then
+					\[
+						\sigma\tau\omega = \omega^{i(\sigma)i(\tau)}.
+					\]
+					Since $\sigma$ and $\tau$ are isomorphisms, it follows that $i(\sigma)$ and $i(\tau)$ are prime to $n$ (otherwise, $\sigma\omega$ would have a period smaller than $n$). This yields a homomorphism of $\gal(k(\omega)/k)$ and is clearly injective because $i(\sigma)$ is uniquely determined by $\sigma$ mod $n$, and the effect of $\sigma$ on $k(\omega)$ is determined by its effect on $\omega$.
+				\end{proof}
+				
 				For a specific field $k$, the question arises whether the image of $\gal(K(\omega)/K)$ in $(\Z/n\Z)^\ast$ is all of $(\Z/n\Z)^\ast$. Looking at $k=\mathds{R}$ or $k=\mathds{C}$, this is not always the case. We give an example on when it is the case.
 				\begin{theorem}
-					Let $\omega$ be a primitive $n$-th root of unity, then
+					Let $\omega$ be a primitive $n$-th root of unity in $\Q^\mathrm{a}$, then
 					\[
 						[\Q(\omega):\Q] = \varphi(n)
 					\]
 					where $\varphi$ is the Euler function.
 				\end{theorem}
 				\begin{proof}
+					According to theorem \ref{gal-cyclotomic}, $[\Q(\omega):\Q] \le \varphi(n)$, hence it suffices to prove the opposite.
+					
 					Let $f(X)$ be the minimal polynomial of $\omega$ over $\Q$. Then $f(X)$ divides $X^n-1$, and we can write $X^n-1=f(X)h(X)$, where both $f$ and $h$ have leading coefficient $1$. By the Gauss lemma, $f$ and $h$ have integral coefficients. We shall now prove that if $p$ is a prime number not dividing $n$, then $\omega^p$ is also a root of $f$.
 					
 					Suppose $\phi^p$ is not a root of $f$, then it is a root of $h$, and $\phi$ is a root of $h(X^p)$. Hence $f$ divides $h(X^p)$ as well, so we write
 					\[
 						h(X^p)=f(X)g(X).
 					\]
-					Note $g$ has integral coefficients as well. Since $a^p \cong a \mod p$ for any integer $a$, we have
+					Note $g$ has integral coefficients as well. Since $a^p \equiv a \mod p$ for any integer $a$, we have
 					\[
 						h(X^p) \equiv h(X)^p \mod p,
 					\]
@@ -97,8 +117,11 @@
 					has multiple rules, which contradicts the remark we have made at the beginning.
 					
 					Since $\omega^p$ is also a primitive $n$-th root of unity, and any primitive $n$-th root of unity can be obtained by raising $\omega$ to a succession of prime powers with primes not dividing $n$, this implies that all primitive $n$-th roots of unity are roots of $f$, which forces the degree of $f$ to be not less than $\varphi(n).$
-					% TODO: Finish the proof of \le \varphi(m)
+					
 				\end{proof}
+			
+				It follows immediately that
+			
 				\begin{corollary}
 					We have an isomorphism
 					\[
