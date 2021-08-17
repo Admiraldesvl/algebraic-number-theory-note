@@ -534,7 +534,7 @@
 				
 				We are not done yet: the result can be even much sharpener:
 				
-				\begin{theorem}
+				\begin{theorem}\label{residue-iso}
 					Notation being above, the canonical injection $\varphi:A/\mfk{p} \to B^d/\mfk{Q}$ is an isomorphism.
 				\end{theorem}
 				
@@ -592,7 +592,21 @@
 					Notation still being above, $\overline{B}=B/\mfk{P}$ is a normal extension of $\overline{A}=A/\mfk{p}$, and the map $\sigma \to \overline{\sigma}$ induces a homomorphism of $G_\mfk{P}$ onto $\gal(\overline{B}/\overline{A})$
 				\end{theorem}
 				\begin{proof}
-					% TODO: Proof.
+					Any element of $\overline{B}$ can be written as $\overline{x}$ for some $x \in B$. Let $\overline{x}$ generate a separable subextension of $\overline{A}$, and let $f$ be the irreducible polynomial for $x$ over $K$. The coefficient of $f$ lie in $A$ because $x$ is integral over $A$, and all the roots of $f$ are integral over $A$. Thus
+					\[
+					f(X) = \prod_{i=1}^{m}(X-x_i)
+					\]
+					splits into linear factors in $B$. Since
+					\[
+					\bar{f}(X)=\prod_{i=1}^{m}(X-\overline{x}_i)
+					\]
+					and all the $\overline{x}_i$ lie in $\overline{B}$, it follows that $\bar{f}$ splits into linear factors in $\overline{B}$. We observe that $f(x)=0 \implies \bar{f}(x)=0$. Hence $\overline{B}$ is normal over $\overline{A}$, and
+					\[
+					[\overline{A}(\overline{x}):\overline{A}] \le [K(x):K] \le [L:K].
+					\]
+					This implies that the maximal separable subextension of $\overline{A}$ in $\overline{B}$ is of finite degree over $A$ by the primitive element theorem, and in fact is always bounded by $[L:K]$.
+					
+					It remains to prove that $\sigma \mapsto \overline{\sigma}$ is actually a surjective homomorphism. By theorem \ref{residue-iso}, it suffices to take $K=L^d$ and $\gal(L/K)=G_\mfk{P}$. Take a generator $\overline{x}$ of the maximal subextension of $\overline{B}$ over $\overline{A}$, for some $x \in B$. Let $f$ be the irreducible polynomial of $x$ over $K$. Any automorphism of $\overline{B}$ is determined by its effect on $\overline{x}$, and maps $\overline{x}$ to some root of $\bar{f}$. Suppose that $x=x_1$. Given any root $x_i$ of $f$, there exists an element $\sigma$ of $G_\mfk{P}$ such that $\sigma x = x_i$. Hence $\overline{\sigma}\overline{x}=\overline{x}_i$. Hence the automorphism of $\overline{B}$ over $\overline{A}$ is induced by elements of $G$ operate transitively on the root of $\bar{f}$. Hence they give us all automorphisms of the residue class field, and the proof is complete.
 				\end{proof}
 				This enables us to work on algebraic closure with some ease:
 				\begin{corollary}
@@ -602,7 +616,7 @@
 					\]
 				\end{corollary}
 				\begin{proof}
-					% TODO: Proof.
+					The kernels of $\psi_1$ and $\psi_2$ are prime ideals of $B$ and according to theorem \ref{galois-lie-above} they differ by an automorphism. Hence there exists $\tau \in \gal(L/K)$ such that $\psi_1$ and $\psi_2$ have the same kernel $\mfk{P}$. Hence there exists an automorphism $\omega$ of $\psi_1(B)$ onto $\psi_2(B)$ such that $\omega \circ \psi_1 = \psi_2$. There exists an element $\sigma$ of $G_\mfk{P}$ such that $\omega \circ \psi_1 = \psi_1 \circ \sigma$, which proves what we want.
 				\end{proof}
 			
 				\begin{definition}
