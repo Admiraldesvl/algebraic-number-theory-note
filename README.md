@@ -21,14 +21,14 @@ If you are considering contributing to this project, distributing it, or whateve
 
 1. Read the [LICENSE](https://github.com/Admiraldesvl/algebraic-number-theory-note/blob/master/LICENSE)
 2. Learn how to do [first contribution on github](https://github.com/firstcontributions/first-contributions) if you are not familar with this yet. If you don't want to work on this anyway, you can also open an issure to speak about your problem. If points are valid, you shall also be considered as contributors.
-3. UK spelling. For example, in this project you will see `localisation` in lieu of `localization`, `programme` in lieu of `program`. There is no special reason. Both UK and US spellings are good, but a mixture of them is not.
+3. UK spelling. For example, in this project you will see `localisation` in lieu of `localization`, `programme` in lieu of `program`. There is no special reason. Both UK and US spellings are not bad, but a mixture of them is.
 4. Make sure you use macros defined in `main.tex`.
 
 If you want to contribute to this project but have no idea where to start, please consider the folloing:
 
-1. Typo correction (easiest but always welcomed. But please not changing UK spelling to US spelling is not considered).
+1. Typo correction.
 2. Formatting correction.
-3. Small mathematical problems (for example, miscalculation can be corrected). 
+3. Small mathematical problems (for example, miscalculation shall be corrected). 
 4. Whenever you find something mathematically wrong, please do not hesitate to give a feedback.
 5. Add examples at appropriate positions (but chances are I will modify them. Please try to follow the style of the book as well).
 6. Check if the writing follows several guidelines for mathematics writing. If not, find out how to fix it for good reasons.
