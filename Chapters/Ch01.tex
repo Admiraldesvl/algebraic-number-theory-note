@@ -353,14 +353,40 @@
 				\]
 				which is to say $R$ is integral, and the theorem is therefore proved.
 			\end{proof}
-			With respect to localisation, we can show the stability of prime ideals lying above:
+			By using local properties, we can show the stability of prime ideals lying above:
 			\begin{corollary}
 				Let $A \subset B$ be rings, $B$ integral over $A$; Let $\mfk{P}$ and $\mfk{P}'$ be prime ideals of $B$ such that $\mfk{P} \subset \mfk{P}'$ and both $\mfk{P}$ and $\mfk{P}'$ lie above a prime ideal $\mfk{p}$ of $A$, then $\mfk{P}=\mfk{P}'$. 
 			\end{corollary}
 			\begin{proof}
 				By corollary \ref{int-loc}, $B_\mfk{p}$ is integral over $A_\mfk{p}$. Let $\mfk{m}$ be the extension of $\mfk{p}$ in $A_\mfk{p}$ and $\mfk{M},\mfk{M}'$ be the extensions of $\mfk{P}$ and $\mfk{P}'$ respectively in $B_\mfk{p}$. Then $\mfk{m}$ is the maximal ideal of $A_\mfk{p}$; $\mfk{M} \subset \mfk{M}'$, and $\mfk{M}$, $\mfk{M}'$ lies above $\mfk{m}$. Hence by theorem \ref{lie-above-maximal}, $\mfk{M}$ and $\mfk{M}'$ are both maximal, hence equal. This reduces to $\mfk{P}=\mfk{P}'$.
 			\end{proof}
-			And now we are ready to prove that $\OK$ is Dedekind.
+			If the context is exactly localisation, we have a finer result:
+			\begin{theorem}
+				Let $A$ be a commutative ring, $S \subset A$ be a multiplicatively closed set. We have a $1-1$-correspondence of prime ideals $\mfk{p}$ do not intersect $S$ and prime ideals of $S^{-1}A$:
+				\[
+					\mfk{p} \mapsto S^{-1}\mfk{p}, \quad \mfk{P} \mapsto \mfk{P} \cap A.
+				\]
+			\end{theorem}
+			\begin{proof}
+				To prove that $S^{-1}\mfk{p}=\mfk{P}$ is prime, suppose that $(a/s)(b/t)=ab/st = p/u \in \mfk{P}$. By definition there exists some $r \in S$ such that $r(abu-stp)=0$. It follows that $rabu=rstp \in \mfk{p}$. But $r,u$ are not in $\mfk{p}$, hence we can only have $ab \in \mfk{p}$, which gives that $a \in \mfk{p}$ or $b \in \mfk{p}$, and as a result $a/s \in \mfk{P}$ or $b/t \in \mfk{P}$. Besides we have $\mfk{p} = \mfk{P} \cap A$. $\subset$ inclusion is clear, but for the converse inclusion, note that if $p/s=a/1 \in \mfk{P} \cap A$, we have $up=uas$ for some $u \in S$, which forces $a$ to be an element of $\mfk{p}$. (Note we implicitly used the fact that $\mfk{p}$ does not intersect $S$.)
+				
+				For the converse, first note that $\mfk{p}=\mfk{P} \cap A$ is indeed a prime ideal. For any $(a/1)(b/1) \in \mfk{p} \subset \mfk{P}$, we must have $a/1 \in \mfk{P}$ or $b/1 \in \mfk{P}$, but both $a/1$ and $b/1$ are in $A$. Also, $\mfk{p}$ does not intersect $S$ because if $s \in S \cap \mfk{p}$, then $(1/s)s=1\in \mfk{p}$, which is absurd. It remains to show that $\mfk{P} = S^{-1}\mfk{p}$. It is clear that $S^{-1}\mfk{p} \subset \mfk{P}$. For the converse, pick any $a/s \in \mfk{P}$, we have $a/1=(a/s)(s/1) \in \mfk{p}$, and therefore $a/s=a(1/s) \in S^{-1}\mfk{p}$.
+			\end{proof}
+			In particular, we can also study the localised ring.
+			\begin{corollary}
+				Let $\mfk{m}_\mfk{p}=\mfk{p}A_\mfk{p}$ be the maximal ideal of $A_\mfk{p}$. We have a canonical embedding
+				\[
+					A/\mfk{p} \hookrightarrow A_\mfk{p}/\mfk{m}_\mfk{p} \cong K(A/\mfk{p})
+				\]
+				where $K(B)$ is the field of fractions of $B$. In particular, if $\mfk{p}$ is maximal, one has an isomorphism for all $n \ge 1$:
+				\[
+					A/\mfk{p}^n \cong A_\mfk{p}/\mfk{m}_\mfk{p}^n.
+				\]
+			\end{corollary}
+			\begin{proof}
+				% TODO: FINISH THIS PROOF
+			\end{proof}
+			And now we are more than ready to prove that $\OK$ is Dedekind.
 			
 			\begin{theorem}\label{o_k-dedekind}
 				Every prime ideal $\mfk{P}$ in $\OK$ is maximal. Hence $\OK$ is of Krull dimension $1$ and is therefore Dedekind.
